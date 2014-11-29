@@ -1,1 +1,3 @@
-.tidal~
+*.tidal~
+*.tidal#
+scratch.tidal
