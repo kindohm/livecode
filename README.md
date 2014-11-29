@@ -1,4 +1,4 @@
 livecode
 ========
 
-Source code for live performances
+Source code for live-coded music.
