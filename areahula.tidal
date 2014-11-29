@@ -1,0 +1,17 @@
+#    __    _         __     __       
+#   / /__ (_)__  ___/ /__  / /  __ _ 
+#  /  '_// / _ \/ _  / _ \/ _ \/  ' \
+# /_/\_\/_/_//_/\_,_/\___/_//_/_/_/_/
+#
+# facebook.com/kindohm | kindohm.com
+# kindohm@gmail.com    | @kindohm                                               
+
+bps (200/120)
+
+d1 $  stack [ sound (samples "tite*8" (slow 0.8 $ run 24)) |+| speed "1.5", 
+sound "~ k" |+| speed "5", 
+sound "[~ hh:13]*2" |+| gain "0", 
+sound "~ [kh*2 ~]" |+| gain "0",
+slow 2 $ sound (samples "~ [~ b:0] ~ ~ ~ ~ ~ b/2" (run 13)) |+| gain "0" ]
+
+hush
