@@ -1,0 +1,17 @@
+bps (200/120)
+
+d1 $ 
+stack [
+whenmod 24 12 (|+| gain "0") $ within (0.25, 0.75) (every 2 (0.25 <~) . every 3 ((|+| speed "0.9 0.8 0.7")) . every 4 (slow 2 . rev)) $ slowspread (slow) [16, 24, 20] $ (striate' 256 (1/24) $ sound "gears") |+| gain "0.8",
+whenmod 6 4 (chop 32) $ every 4 (density 2) $ every 3 (density 2) $ every 2 (density 2) $ sound "lessh*4" |+| end (whenmod 7 3 ((*0.1) <$>) "1") |+| speed "1.5",
+every 10 (|+| speed (scale 0.9 1.2 $ slow 1.9 sine1)) $ every 7 (within (0.25, 0.75) (slow 2 . rev . stut 4 0.25 0.25)) $ whenmod 11 7 (iter 4) $ slow 2 $ sound "~ lesss [~] [lesss lessk ~ lessk]",
+whenmod 16 12 (const $ sound "lessb*8?" |+| cut "1") $ sound "lessb/2" |+| cut "1",
+whenmod 12 8 ((|+| end "0.5") . density 2) $ whenmod 10 6 (|+| gain "0") $ sound (samples "lesscut*8?" (slow 0.8 $ run 22))
+] |+| shape "0.1" |+| delaytime "0.4" |+| delayfeedback "0.4"
+
+
+whenmod 21 16 (|+| gain "0") $ every 2 (0.25 <~) $ every 3 (slow 2 . brak) $ whenmod 16 14 (const $ sound "lessv*8?" |+| end "0.4" |+| cut "3" |+| speed "0.9" |+| shape "0.1") $ 
+whenmod 14 10 (const $ retrig $ slow 16 $ striate' 300 (1/70) $ sound "lessmel*4" |+| gain "0.8" |+| speed "[1 1 1 1 0.9 0.8 1 1.2]/4") 
+$ degradeBy 0.5 $ sound "lessmel*2" |+| cut "3" |+| speed "[1 1 1 1 0.9 0.8 1 1.2 0.5]/4" |+| delay "0.2",
+
+hush
