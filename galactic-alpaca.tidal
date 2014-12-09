@@ -7,8 +7,8 @@ sound (samples "kh*8?" (run 33)) |+| gain "0.9",
 sound "~ ~ ~ sea/3" |+| speed "[1 0.5 0.75]/4",
 sound "~ shard:12" |+| gain "1",
 sound (samples "keys2*8" (every 2 (0.25 <~) $ every 3 (0.25 <~) $ every 4 (rev) $ run 10)) |+| shape "0.5" 
-|+| cutoff (scale 0.05 0.2 $ slow 2.1 sine1) |+| resonance "0.6",
+|+| cutoff (scale 0.05 0.1 $ slow 2.1 sine1) |+| resonance "0.6",
 every 3 (density 2) $ every 4 (density 2) $ sound "hh:10*4"
-]
+] |+| delaytime "0.25" |+| delayfeedback "0.5"
 
 hush
