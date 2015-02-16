@@ -6,4 +6,4 @@ whenmod 24 16 (const $ sound "{hh:14*2 hh:14*2 ~ ~ hh:14*2}%4" ) $ sound "{[feel
 whenmod 32 24 (const $ slow 2 $ sound "~ stite:8" |+| shape "0.2") $ sound "~ s" |+| shape "0.3", 
 sound "[~ heem/2] ~ ~ ~" |+| speed "0.75", 
 whenmod 30 24 ((|+| cutoff "0.01") . (|+| resonance "0.01")) $ slowspread (striate) [256, 8, 64, 16, 32, 128] $ whenmod 7 5 (density 2) $ sound "laz*8" 
-|+| speed "[1 1.2 0.8 1 0.5 1.5]/5" |+| gain "0.9" ]
+|+| speed "[1 1.2 0.8 1 0.5 1.5]/5" |+| gain "0.8" ]
