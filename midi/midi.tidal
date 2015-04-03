@@ -36,6 +36,13 @@ note "[44 32] [56 55 58 56] [46 34] [56 55 58 56]",
 note "[48 36] [56 60 58 56] [50 38] [58 60 56 55]"
 ] |+| dur "1"
 
+-- ghost
+keys $ stack [
+slow 8 $ note "69" |+| dur "10.9",
+slow 8 $ note "48 45 47 41" |+| dur "2.720",
+slow 8 $ whenmod 4 1 (const $ note "~") $ note "[~ [~ 72] ~ 77] [~ 81 ~ ~] ~ ~" |+| dur "2.725",
+slow 8 $ whenmod 3 1 (const $ note "~") $ note "~ ~ [~ [~ 84] ~ ~] [[~ 88] ~ 93 ~]" |+| dur "2.725" ]
+
 
 
 k1 silence

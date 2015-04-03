@@ -1,0 +1,31 @@
+import Sound.Tidal.MIDI.Output
+import Sound.Tidal.Rytm
+
+keyStreams <- keyproxy 1 5 keys [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+
+[bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,k14,brute,keys] <- sequence keyStreams
+
+bps (120/120)
+
+bd $ note "~"
+|+| bddec "0.5"
+|+| bdswt "0.5"
+|+| tun "0.4"
+|+| lev "1"
+|+| hardbdhold "0.5"
+|+| hardbdsnap "0.5"
+|+| hardbdwav "0"
+|+| hardbdtic "0.5"
+|+| ovr "0"
+
+sd $ note "~"
+|+| hardsdswd "0.25"
+|+| hardsdswt "0.4"
+|+| sdnol "1"
+|+| hardsdtic "0.9"
+|+| sdnod "0.4"
+|+| sddec "0.6"
+|+| tun "0.7"
+|+| lev "1"
+|+| amprev "0.5"
+|+| ovr "0"
