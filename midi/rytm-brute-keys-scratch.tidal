@@ -1,0 +1,66 @@
+import Sound.Tidal.MIDI.Output
+import Sound.Tidal.Rytm
+
+keyStreams <- keyproxy 1 5 keys [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+
+[bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,k14,brute,keys] <- sequence keyStreams
+
+bps (200/120)
+
+bd $ slow 4 $ note "32 [~ 32] ~ ~ ~ ~ ~ ~"
+-- |+| bddec "[0.5]"
+-- |+| bdswt "0.5"
+-- |+| tun "0.5"
+-- |+| lev "1"
+-- |+| hardbdhold "0.9"
+-- |+| clasbdswd "0.5"
+-- |+| clasbdtra "0.5"
+-- |+| clasbdwav "0.9"
+-- |+| ovr "0"
+
+sd $ note "{~ 36 [~ 36] ~ ~}%2"
+-- |+| hardsdswd "0.4"
+-- |+| hardsdswt "0.5"
+-- |+| sdnol "0.5"
+-- |+| hardsdtic "0.9"
+-- |+| sdnod "0.2"
+-- |+| sddec "0.5"
+-- |+| tun "0.5"
+-- |+| lev "1"
+-- |+| amprev "0.5"
+-- |+| ovr "0.5"
+
+keys $ note "{~ ~ [69/2] 76 75/3}%8"
+|+| dur "1"
+
+d2 $ slow 2 $ sound "blh2:2/2" |+| speed "0.5" |+| unit "c"
+
+d3 $ stack [
+sound "~ esd" |+| gain "0.9",
+sound "cpr/3" |+| shape "0.8" |+| speed "0.8",
+sound "run:3*8?" |+| speed "[1 1.1]*3" |+| cut "7" |+| end "0.12" |+| gain "1" ]
+
+d3 silence
+
+keys silence
+
+hush
+
+sd $ note "{~ 32 ~}%2"
+|+| amprev "0.2"
+
+cp $ slow 4 $ note "{~ ~ [~ 32]}%4"
+|+| amprev "0.99"
+
+cb $ note "32*4" |+| perf2 "0"
+
+
+cb silence
+bd silence
+sd silence
+ch silence
+cp silence
+
+ch $ foldEvery [5,3,4] (density 2) $ note "32*4"
+
+ch silence

@@ -5,7 +5,7 @@ keyStreams <- keyproxy 1 5 keys [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 
 [bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,k14,brute,keys] <- sequence keyStreams
 
-bps (120/120)
+bps (200/120)
 
 bd $ note "~"
 |+| bddec "0.5"

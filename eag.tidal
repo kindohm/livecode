@@ -1,0 +1,110 @@
+import Sound.Tidal.MIDI.Output
+import Sound.Tidal.Rytm
+
+keyStreams <- keyproxy 1 5 keys [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+
+[bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,k14,brute,keys] <- sequence keyStreams
+
+let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+let rip' a b c d e p = within (a, b) (slow 2 . rev . stut c d e) p
+let up = speed . ((1.059466**) <$>)
+
+bps (200/120)
+
+keys $ slow 4 $ note "{30/2}%2" |+| dur "0.2"
+
+bd $ note "~ 34*2 ~ ~"
+bd silence
+sd $ slow 4 $ note "34"
+sd silence
+cp $ slow 3 $ note "~ 35"
+cp silence
+ch $ density 4 $ note "36*2 ~"
+ch silence
+oh $ density 4 $ note "~ [~ 34]"
+oh silence
+bt silence
+
+d1 $ slowspread ($) [id, rev, (|+| accelerate "-0.5 0.5"), rip' 0 1 8 0.2 0.1, (|+| speed "1.2 1.5 -1.2 0.8"),
+(|+| speed "0.5") . slow 2, striate 4 . slow 2, (|+| coarse "16 32 24"), (|+| speed (scale 0.8 1.2 $ slow 2.1 sine1))] $
+foldEvery [3,4] (0.25 <~) $
+stack [
+sound (samples "gli1*16?" (slow 0.74 $ run 50)) |+| shape "0.3" |+| speed "1.5",
+sound "~ cpr" |+| shape "0.5",
+slow 2 $ sound "{kh:1*4 ~ ~}%4",
+foldEvery [3,4,5] (density 2) $ every 3 (density 2) $ sound "hh*4" ] |+| delaytime "0.5" |+| delayfeedback "0.4"
+
+d2 $ slow 8 $ sound "blh8:7" |+| unit "c" |+| speed "0.1225" |+| cut "101" |+| shape "0.5"
+
+hush
+
+cb $ note "32*5" |+| perf2 "0"
+
+cb silence
+
+-- peri
+sound (samples "{peri*2 tite*2 [peri tite] doru [tite peri] c64 peri*2}%8" (run 30)) |+| speed "1.5" |+| end "0.2" |+| shape "0.1"
+|+| cutoff (scale 0.05 0.2 $ slow 3.1 sine1) |+| resonance "0.1"
+
+-- gli1
+d1 $ sound (samples "gli1*16?" (slow 0.74 $ run 50)) |+| shape "0.1"
+
+-- moose
+d1 $ sound (samples "moose(3,8)" (irand 20)) |+| cut "1"
+
+-- sharp4
+d1 $ slow 2 $ sound (samples "sharp4(3,8)" (irand 20)) |+| cut "1"
+
+-- suchb3
+d1 $ whenmod 8 6 (const $ sound (samples "suchb4*2" (irand 5)) |+| cut "1") $
+sound (samples "suchb3(3,8)" (irand 20)) |+| cut "1"
+
+-- d4
+d1 $ sound (samples "d4*2" (slow 0.7 $ run 6)) |+| cut "1"
+
+-- electro
+d1 $ degradeBy 0.6 $ sound "electrowave*4" |+| cut "1" |+| coarse "32"
+
+-- brk
+sound (samples "amenall*8" (irand 30)) |+| speed "1.4" |+| shape "0.8",
+
+-- blh
+d2 $ slow 2 $ sound "blh2:2" |+| unit "c" |+| speed "0.5" |+| cut "101" |+| shape "0.1"
+d2 $ slow 2 $ sound "blh2:9" |+| unit "c" |+| speed "0.5" |+| cut "101" |+| shape "0.3"
+d1 $ slow 4 $ sound "blh4:3" |+| unit "c" |+| speed "0.25" |+| cut "101" |+| shape "0.4"
+d1 $ slow 4 $ sound "blh4:4" |+| unit "c" |+| speed "0.25" |+| cut "101" |+| shape "0.1"
+d1 $ slow 4 $ sound "blh4:5" |+| unit "c" |+| speed "0.25" |+| cut "101" |+| shape "0.1"
+d1 $ slow 4 $ sound "blh4:12" |+| unit "c" |+| speed "0.25" |+| cut "101" |+| shape "0.3"
+d1 $ slow 4 $ sound "blh4:20" |+| unit "c" |+| speed "0.25" |+| cut "101" |+| shape "0.3"
+d1 $ slow 4 $ sound "blh4:22" |+| unit "c" |+| speed "0.25" |+| cut "101" |+| shape "0.2"
+d1 $ slow 4 $ sound "blh4:24" |+| unit "c" |+| speed "0.25" |+| cut "101" |+| shape "0.2"
+d1 $ slow 8 $ sound "blh8" |+| unit "c" |+| speed "0.1225" |+| cut "101"  |+| shape "0.5"
+d1 $ slow 8 $ sound "blh8:2" |+| unit "c" |+| speed "0.1225" |+| cut "101" |+| shape "0.5"
+d1 $ slow 8 $ sound "blh8:3" |+| unit "c" |+| speed "0.1225" |+| cut "101" |+| shape "0.5"
+d1 $ slow 8 $ sound "blh8:4" |+| unit "c" |+| speed "0.1225" |+| cut "101" |+| shape "0.5"
+d1 $ slow 8 $ sound "blh8:7" |+| unit "c" |+| speed "0.1225" |+| cut "101" |+| shape "0.5"
+d1 $ slow 8 $ sound "blh8:9" |+| unit "c" |+| speed "0.1225" |+| cut "101" |+| shape "0.5"
+
+
+-- bd rytm params
+-- |+| bddec "[0.5]"
+-- |+| bdswt "0.5"
+-- |+| tun "0.5"
+-- |+| lev "1"
+-- |+| hardbdhold "0.9"
+-- |+| clasbdswd "0.5"
+-- |+| clasbdtra "0.5"
+-- |+| clasbdwav "0.9"
+-- |+| ovr "0"
+
+-- sd rytm params
+-- |+| hardsdswd "0.4"
+-- |+| hardsdswt "0.5"
+-- |+| sdnol "0.5"
+-- |+| hardsdtic "0.9"
+-- |+| sdnod "0.2"
+-- |+| sddec "0.5"
+-- |+| tun "0.5"
+-- |+| lev "1"
+-- |+| amprev "0.5"
+-- |+| ovr "0.5"
