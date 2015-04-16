@@ -3,44 +3,15 @@ import Sound.Tidal.Rytm
 
 keyStreams <- keyproxy 1 5 keys [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 
-[bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,k14,brute,keys] <- sequence keyStreams
+[bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,k14,k15,keys] <- sequence keyStreams
 
 let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
 let rip' a b c d e p = within (a, b) (slow 2 . rev . stut c d e) p
 let up = speed . ((1.059466**) <$>)
 
-bps (200/120)
+bps (90/120)
 
-keys $ slow 4 $ note "{30/2}%2" |+| dur "0.2"
 
-bd $ note "~ 34*2 ~ ~"
-bd silence
-sd $ slow 4 $ note "34"
-sd silence
-cp $ slow 3 $ note "~ 35"
-cp silence
-ch $ density 4 $ note "36*2 ~"
-ch silence
-oh $ density 4 $ note "~ [~ 34]"
-oh silence
-bt silence
-
-d1 $ slowspread ($) [id, rev, (|+| accelerate "-0.5 0.5"), rip' 0 1 8 0.2 0.1, (|+| speed "1.2 1.5 -1.2 0.8"),
-(|+| speed "0.5") . slow 2, striate 4 . slow 2, (|+| coarse "16 32 24"), (|+| speed (scale 0.8 1.2 $ slow 2.1 sine1))] $
-foldEvery [3,4] (0.25 <~) $
-stack [
-sound (samples "gli1*16?" (slow 0.74 $ run 50)) |+| shape "0.3" |+| speed "1.5",
-sound "~ cpr" |+| shape "0.5",
-slow 2 $ sound "{kh:1*4 ~ ~}%4",
-foldEvery [3,4,5] (density 2) $ every 3 (density 2) $ sound "hh*4" ] |+| delaytime "0.5" |+| delayfeedback "0.4"
-
-d2 $ slow 8 $ sound "blh8:7" |+| unit "c" |+| speed "0.1225" |+| cut "101" |+| shape "0.5"
-
-hush
-
-cb $ note "32*5" |+| perf2 "0"
-
-cb silence
 
 -- peri
 sound (samples "{peri*2 tite*2 [peri tite] doru [tite peri] c64 peri*2}%8" (run 30)) |+| speed "1.5" |+| end "0.2" |+| shape "0.1"
