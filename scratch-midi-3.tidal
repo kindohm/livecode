@@ -1,0 +1,25 @@
+import Sound.Tidal.MIDI.Output
+import Sound.Tidal.VolcaKeys
+keyStreams <- keyproxy 1 4 keys [1]
+[k1] <- sequence keyStreams
+
+let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+let rip' a b c d e p = within (a, b) (slow 2 . rev . stut c d e) p
+
+bps (140/120)
+
+k1 $ note "{32 ~ ~}%8"
+|+| attack "0.05"
+|+| kcutoff (scale 0.1 0.2 $ slow 3 sine1)
+|+| decay "0.99"
+|+| vcfegint "0.4"
+
+d1 $ slowspread ($) [id, rev, (|+| coarse "8 4 12"), rip 0.2 0.1, (|+| speed "1.2 1.5 -1.2 0.8"),
+id, (|+| unit "c"), rip' 0 1 8 0.2 0.1, trunc 0.25, gap 4 . rev] $
+foldEvery [3,4] (0.25 <~) $
+stack [
+every 2 (|+| speed "-1") $ every 4 (|+| coarse "8") $ sound "~ ~ ~ cpr/3" |+| gain "0.6"]
+
+d1 silence
+
+k1 silence
