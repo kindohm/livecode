@@ -1,7 +1,10 @@
 import Sound.Tidal.MIDI.Output
 import Sound.Tidal.VolcaKeys
-keyStreams <- keyproxy 1 4 keys [1]
-[k1] <- sequence keyStreams
+import Sound.Tidal.SimpleSynth
+import Sound.Tidal.Rytm
+
+keyStreams <- keyproxy 1 "Scarlett 18i8 USB" keys [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+[bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,k14,k15,k16] <- sequence keyStreams
 
 let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
 let rip' a b c d e p = within (a, b) (slow 2 . rev . stut c d e) p
@@ -23,3 +26,47 @@ every 2 (|+| speed "-1") $ every 4 (|+| coarse "8") $ sound "~ ~ ~ cpr/3" |+| ga
 d1 silence
 
 k1 silence
+
+
+bd $ note "44*16?"
+
+
+bd silence
+
+ht $ slow 2 $ note "36*4"
+|+| samptune "{0.5 [0.7 0.75 0.65] 0.5 0.6 0.5}%4"
+|+| sampstart "0.1"
+|+| samploop "1"
+|+| sampend "{0.22 0.21 0.45}%4"
+|+| amprev "0.8"
+
+
+bd $ note "~ 36*4 ~ ~"
+
+bd silence
+
+sd silence
+ch silence
+
+cp $ slow 2 $ note "{~ [36*4 ~] ~}%4"
+cp silence
+sd $ every 3 (stut 4 0.25 0.25) $ note "~ 36"
+
+oh $ density 2 $ note "~ 36"
+
+ch $ note "36*16"
+
+k13 $ note "32*4"
+
+d1 $ sound "kh*8? [s sea/4]"
+
+d2 $ slow 16 $ zoom (0, 0.25) $ striate' 256 (1/20) $ sound "paddark:1" |+| speed "1" |+| gain "0.8"
+
+d3 $ (spread' (striate' 64) ((*0.1) <$> slow 2 sine1) $ sound "~ thx*4") |+| speed "[[2 3], {1.5 1.25 0.75}%4]"
+
+d4 $ density 4 $ sound "~ thx:7" |+| speed "3"
+
+
+hush
+
+oh silence
