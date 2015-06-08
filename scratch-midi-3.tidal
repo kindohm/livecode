@@ -6,67 +6,75 @@ import Sound.Tidal.Rytm
 keyStreams <- keyproxy 1 "Scarlett 18i8 USB" keys [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 [bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,k14,k15,k16] <- sequence keyStreams
 
+keyStreams <- keyproxy 1 "Scarlett 18i8 USB" keys [2]
+[volca] <- sequence keyStreams
+
+keyStreams2 <- keyproxy 1 "MiniBrute" keys [1]
+[brute] <- sequence keyStreams2
+
 let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
 let rip' a b c d e p = within (a, b) (slow 2 . rev . stut c d e) p
 
-bps (140/120)
+bps (170/120)
 
-k1 $ note "{32 ~ ~}%8"
-|+| attack "0.05"
-|+| kcutoff (scale 0.1 0.2 $ slow 3 sine1)
-|+| decay "0.99"
-|+| vcfegint "0.4"
+bd $ note "0*4"
 
-d1 $ slowspread ($) [id, rev, (|+| coarse "8 4 12"), rip 0.2 0.1, (|+| speed "1.2 1.5 -1.2 0.8"),
-id, (|+| unit "c"), rip' 0 1 8 0.2 0.1, trunc 0.25, gap 4 . rev] $
-foldEvery [3,4] (0.25 <~) $
+k13 $ note "36*8"
+|+| perf1 (scale 0 1 $ slow 2.1 sine1)
+|+| perf2 (scale 0 1 $ slow 4.21 sine1)
+|+| perf3 (scale 0 1 $ slow 3.31 sine1)
+|+| perf4 (scale 0 1 $ slow 5.41 sine1)
+
+k16 $ density 1 $
+whenmod 8 4 (const $ note ("1*16" <~> ((+30).(*1) <$> "[0 4 7 9 11 13 15]*8"))
+) $
+note ("1*16" <~> ((+36).(*1) <$> "[0 4 7 9 11 2 5 10]*8"))
+
+bd $ whenmod 4 2 (palindrome) $ note "36(7,16)"
+
+sd $ density 1 $ note "~ 36 [~ 36] ~"
+
+k15 $ slow 2 $ note "77 70 ~ ~"
+|+| dur "1"
+
+
+k16 $ density 2 $ note "{44(3,8) 32 ~ 40/2 ~}%1"
+
+d1 $
 stack [
-every 2 (|+| speed "-1") $ every 4 (|+| coarse "8") $ sound "~ ~ ~ cpr/3" |+| gain "0.6"]
+sound "ch:1*16",
+sound "kh/2 psh",
+slow 2 $ sound "~ cpr" |+| speed "0.8" ]
+|+| delaytime "0.5" |+| delayfeedback "0.5"
 
-d1 silence
+hush
 
-k1 silence
+k16 silence
 
-
-bd $ note "44*16?"
-
-
-bd silence
-
-ht $ slow 2 $ note "36*4"
-|+| samptune "{0.5 [0.7 0.75 0.65] 0.5 0.6 0.5}%4"
-|+| sampstart "0.1"
-|+| samploop "1"
-|+| sampend "{0.22 0.21 0.45}%4"
-|+| amprev "0.8"
-
-
-bd $ note "~ 36*4 ~ ~"
+k15 silence
 
 bd silence
 
 sd silence
-ch silence
 
-cp $ slow 2 $ note "{~ [36*4 ~] ~}%4"
-cp silence
-sd $ every 3 (stut 4 0.25 0.25) $ note "~ 36"
+bps (120/120)
 
-oh $ density 2 $ note "~ 36"
+k16 $ note ((+45) <$> whenmod 8 4 ((subtract 2) <$>) ("{0 7 2 -2 [10 -14]/2}%4"))
 
-ch $ note "36*16"
+k15 $ note ((+81) <$> whenmod 8 4 ((subtract 2) <$>) ("{0 7 2 -2 [10 -14]/2}%16")) |+| dur "1"
 
-k13 $ note "32*4"
+k15 silence
+k16 silence
 
-d1 $ sound "kh*8? [s sea/4]"
-
-d2 $ slow 16 $ zoom (0, 0.25) $ striate' 256 (1/20) $ sound "paddark:1" |+| speed "1" |+| gain "0.8"
-
-d3 $ (spread' (striate' 64) ((*0.1) <$> slow 2 sine1) $ sound "~ thx*4") |+| speed "[[2 3], {1.5 1.25 0.75}%4]"
-
-d4 $ density 4 $ sound "~ thx:7" |+| speed "3"
+d1 $ sound "wall/2 k2*4 teks:1/2 ch*4"
 
 
-hush
+volca $ slow (4/3) $ note ((+60) <$> (run 16))
+|+| voice "0.9"
+|+| kcutoff "0.1"
 
-oh silence
+brute $ note ((+40) <$> (run 6))
+
+volca silence
+
+brute silence

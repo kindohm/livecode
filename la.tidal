@@ -1,0 +1,24 @@
+
+let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+let rip' a b c d e p = within (a, b) (slow 2 . rev . stut c d e) p
+let up = speed . ((1.059466**) <$>)
+
+bps (140/120)
+
+d1 $ stack [sound "{la*2 la la*2}%4" |+| up "{[4 -1] 0 [[-5, [~ ~ ~ 7]/4] 2]}%4",
+sound "{la ~ ~}%2" |+| up "-24 -36" |+| cut "1"]
+
+hush
+
+d1 $ slow 8 $ spread' (striate' 4000) ((*0.05) <$> density 2 sine1) $ sound "necrofull" |+| shape "0.3"
+|+| delay "0.5" |+| delaytime "0.5" |+| delayfeedback "0.5"
+|+| gain "0"
+
+d2 $ (0.3725 ~>) $ sound "~ ~ ~ cpr/4" |+| shape "0.6" |+| vowel "e"
+
+d3 $ (0.3725 ~>) $ slow 4 $ sound "heem hawk" |+| speed "0.25" |+| delay "0.5"
+
+d2 $ (0.3725 ~>) $ sound (samples "kl kl [kl ~ ~ kl] [oh/3 [ch oh/2]]" (run 20))
+|+| cut "5" |+| shape "0.4"
+
+hush

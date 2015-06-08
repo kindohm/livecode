@@ -1,0 +1,19 @@
+bps (140/120)
+
+let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+let rip' a b c d e p = within (a, b) (slow 2 . rev . stut c d e) p
+
+d1 $ whenmod 20 16 (iter 4) $ slowspread ($) [id, rev, (|+| speed "1.2 1.5 -1.2 0.8"), trunc 0.25, trunc 0.25, rip 0.2 0.1,
+(|+| coarse "16 4 8"), gap 4, rev, rip' 0 1 8 0.2 0.1] $ foldEvery [3,4] (0.25 <~) $
+stack [
+slow 8 $ sound (samples "k*32? [cp:1 k*16?]" (run 30)) |+| gain "[1 [0.9 1]]"]
+
+d1 silence
+
+k16 $note "43*4"
+|+| decay "0.95"
+|+| kcutoff "0.3"
+|+| vcfegint "0.3"
+|+| voice "1"
+
+k16 silence

@@ -1,0 +1,43 @@
+-- templates because reasons
+-- k16 $ note ((+33) <$> "0")
+-- k16 $ note (preplace(1,1) "1*4" ((+33) <$> "0"))
+
+-- boilerplate code. don't read this.
+keyStreams <- keyproxy 1 "Scarlett 18i8 USB" keys [2]
+[volca] <- sequence keyStreams
+keyStreams2 <- keyproxy 1 "MiniBrute" keys [1]
+[brute] <- sequence keyStreams2
+
+-- quarters
+bps(120/120)
+
+brute $ note ((+45) <$> whenmod 8 4 ((subtract 2) <$>) ("{0 7 2 -2 [10 -14]/2}%4"))
+
+-- save this one for later
+bps (190/120)
+
+brute $ note (preplace (1,8) "{1 ~ 1 ~ ~}%4" ((+33) <$> (("0 3 2 5 3 8 7 -2"))))
+
+-- let's dance or something
+bps (130/120)
+
+brute $ note (preplace (1,1) "[~ 1]*2 [~ 1 1 1] ~ ~" ((+45) <$> (("0 2 -1"))))
+
+-- A++++ would make again! :thumbsup:
+bps(130/120) -- passed experimental test at 190
+
+brute $ note ( preplace(1,16) "{1*2 [~ 1]*2 1 1 [~ 1]}%2"
+((+45) <$> (whenmod 16 12 ((+12) <$>) <$> whenmod 8 4 ((+12) <$>) <$> every 3 (rev) <$>
+within (0.25, 0.5) (negate <$>)) ("0 4 0 2 7 5 -2")))
+
+-- music box
+brute $ note ((+81) <$> (whenmod 6 4 ((subtract 2) <$>)) ("{0 11 12 7 12 14}%16"))
+
+-- acidish
+brute $ note (preplace(1,4) "1*16" ((+33) <$> (slowcat ["[0 -2] 5 7 9", "[0 -2] 5 7 9", "[-2 -4] 7 5 3", "[-4 -6] 10 8 6"])))
+
+bps (120/120)
+brute $ slow 4 $ note ((+48) <$> ("0 ~ ~ 12 7 ~ ~ 16 0 ~ ~ 12 7 ~ ~ 23"))
+
+volca $ note ((+72) <$> ("{[0 -5] [-12/3 7] [16/2 14] [0 19] [16 17/4]}%4") )
+|+| dur "0.3"
