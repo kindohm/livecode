@@ -14,26 +14,40 @@ keyStreams <- keyproxy 1 "Scarlett 18i8 USB" keys [2]
 keyStreams2 <- keyproxy 1 "MiniBrute" keys [1]
 [brute] <- sequence keyStreams2
 
--- legato, w d/r
+-- legato. like slowflakes. just not really.
 bps (70/120)
 brute $ slow 2 $ note ((+45) <$> (whenmod 4 2 ((subtract 2) <$> )) ("0 ~ ~ [16 16 28]/3 0 ~ ~ [14 24]/2"))
 
--- more hip hoppy
+-- this one is dope. srsly.
 bps (80/120)
 brute $ note ((+45) <$> ("[0 12 ~ ~] [~ [3 15]] ~ [8 20 ~ ~] [~ [0 12]] ~ [3 15 ~ ~] [~ [7 19]]"))
 
 -- let's dance or something
 bps (120/120)
 brute $ note (preplace (1,1) "[~ 1]*2 [~ 1 1 1] ~ ~" ((+45) <$> (("0 2 -1"))))
+d1 $ sound (samples "kl kl [kl ~ ~ kl] ~" "1") |+| speed "1"
 
+-- hi mom.
+bps (140/120)
+brute $ slow 8 $ note ((+48) <$> ("0 [2 ~ ~ 10] 5 7")) |+| dur "0.25"
+brute silence
+
+-- defrag failed defdo.
+bps (190/120)
+brute $ slow 8 $ note ((+54) <$> ("0 2 -3 -15"))
+
+-- ok, NOW do the intro. 200 bpm should do it
+
+-- INSERT CODE HERE --
+
+
+-- other crap:
 -- A++++ would make again! :thumbsup:
 bps(130/120) -- legato, vib, glid
+
 brute $ note ( preplace(1,16) "{1*2 [~ 1]*2 1 1 [~ 1]}%2"
 ((+45) <$> (whenmod 16 12 ((+12) <$>) <$> whenmod 8 4 ((+12) <$>) <$> every 3 (rev) <$>
 within (0.25, 0.5) (negate <$>)) ("0 4 0 2 7 5 -2")))
-
-bps (140/120)
-brute $ note "{45 ~ ~}%8"
 
 -- acidish
 brute $ note (preplace(1,4) "1*16" ((+33) <$> (slowcat ["[0 -2] 5 7 9", "[0 -2] 5 7 9", "[-2 -4] 7 5 3", "[-4 -6] 10 8 6"])))
