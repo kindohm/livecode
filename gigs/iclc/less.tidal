@@ -1,0 +1,39 @@
+bps (190/120)
+
+{-
+volca bass settings:
+VCO group 1/3
+AMP EG ON
+-}
+
+-- bass
+volca $ slow 4 $ note "[55 [~ 60] ~ 53 [~ 46/2] ~ ~ ~] ~"
+|+| lforate "0.5" |+| lfoint "0.04" |+| attack "0" |+| decay "1"
+|+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
+
+
+volca $ slow 4 $ note ("[55 [~ 60] ~ 53 [~ 46] ~ ~ ~] [50 [~ 53] ~ 48 ~ ~ ~ ~]")
+|+| lforate "0.5" |+| lfoint "0.04" |+| attack "0" |+| decay "1"
+|+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
+
+
+
+-- final ref
+d1 $ screw $ foldEvery [3,4] (0.25 <~) $ stack [
+slowcat [
+sound (samples "lesskit0*8" (irand 15)) |+| cut "1",
+sound (samples "lesskit1*8" (irand 8)) |+| cut "1",
+sound (samples "lesskit2*8" (irand 15)) |+| cut "1"
+],
+sound "{~ lessbeep ~}%2" |+| gain "0.8",
+slow 2 $ sound "~ lesss ~ lesss",
+slow 8 $ sound "[~ gears] ~"  |+| cut "3",
+slow 8 $ sound "~ [~ moremine]" |+| cut "3",
+slow 2 $ sound "lessb" |+| cut "2",
+slow 2 $ sound "[lessk lessh:1]*4 ~ ~ ~",
+sound "[~ lessh]*2 [lessh*2 [lessh*2 lessh]]" ]
+
+
+
+hush
+volca silence
