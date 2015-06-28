@@ -8,15 +8,3 @@ import Sound.Tidal.VolcaBass
 import Sound.Tidal.SimpleSynth
 keyStreams <- keyproxy 1 "Scarlett 18i8 USB" bass [1]
 [volca] <- sequence keyStreams
-
-
-
-
-
-volca silence
-
-bps (180/120)
-
---- wtf is this?
-volca $ foldEvery [2,3,4] (slow (2)) $ note ((subtract 12 <$>) $ whenmod 32 16 (subtract 8 <$>) $ whenmod 8 4 (subtract 5 <$>) $ "[77 85]*4 [65 101]*6")
-|+| dur "0.05"
