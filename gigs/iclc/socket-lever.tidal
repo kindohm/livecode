@@ -1,0 +1,10 @@
+bps (175/120)
+
+d1 $
+stack [
+slow 2 $ sound (samples "[sockk sockh]*4 [~ sockh sockh ~] [~ sockh*6 ~ ~] [~ sockk sockh*2 ~]" "10"),
+sound "~ [socks ~ ~ socks:1]",
+slow 2 $ sound (samples "sockfx:0/2 doru*2 c64*2 doru*2 [[peach c64:5]/2 c64] [c64]*2 [clak]*4 doru*2" (every 2 (0.25 <~) $ run 44)) |+| speed "0.8",
+slow 2 $ sound (samples "~ socksub [~ [socksub socksub]/2] ~" (slow 0.8 $ run 5)) |+| cut "2"]
+
+hush

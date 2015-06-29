@@ -1,46 +1,15 @@
-# potential tracks
-less
-defrag
-component factory
-my maker melts me
-parts bin
-ignore file
-intro
-unsorted list
+# tentative set list
+alone
+lesss
+socket lever
+def (with intro outro)
 
-obviously only have 30 mins so will have to pick
 
-# track notes
+# work left...
 
-## LESS
-- convert melody to volca bass line
-- slice up amen
-- code up parts
-
-## DEFRAG
-- slice up all the drums
-- what to do with the long synths
-- one shots for kick/snare
-- convert bass to volca bass line ???
-- code up parts and practice. not sure how to do this one yet
-- might not need the true track. leave out long synths. just do
-bass, defdo, and breaks. remember volcal stretching.
-
-## ignore file
-think I have everything. can use amenall.
-
-## intro
-don't really know what I'm doing with this one.
-intro + double bass + snare.
-maybe create a dedicated snare?
-maybe create a crazy acid high bass line?
-
-# parts bin
-need to organize
-some kind of synth line?
-
-# component factory
-organize and create parts
-
-# unsorted list
-organization and practice. not sure how to pull this one off.
+- Alone - new drum samples. maybe use selfie?
+- cpr
+- more breaks for def?
+- custom "screws" for each track
+- synth for socket lever?
+- change cutoff param in bass module
