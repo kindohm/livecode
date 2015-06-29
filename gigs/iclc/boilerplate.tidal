@@ -5,6 +5,5 @@ let screw = slowspread ($) [id, rev, (|+| accelerate "-0.5 0.5"), (|+| coarse "3
 let screwsafe = slowspread ($) [id, rev, (|+| accelerate "-0.5 0.5"), (|+| coarse "32 64 16"), id, rip 0.2 0.1, (|+| unit "c"), (|+| speed "1.2 1.5 -1.2 0.8")]
 import Sound.Tidal.MIDI.Output
 import Sound.Tidal.VolcaBass
-import Sound.Tidal.SimpleSynth
 keyStreams <- keyproxy 1 "Scarlett 18i8 USB" bass [1]
 [volca] <- sequence keyStreams

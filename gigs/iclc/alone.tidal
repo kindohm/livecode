@@ -1,0 +1,12 @@
+
+bps (190/120)
+
+let alone = "0 -7 -10 -14"
+
+volca $ density 2 $ slowcat [
+note ((+98) <$> (alone)),
+note ((+86) <$> (alone)),
+note ((+74) <$> (alone)),
+note ((+62) <$> (alone))]
+|+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
+|+| dur "0.1"

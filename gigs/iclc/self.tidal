@@ -10,15 +10,15 @@ volca $ note ((+79) <$> (id) "{12 14 -12 -14 7 9 -17 -15 -17 -19}%16")
 |+| dur "0.15"
 
 -- ref
-volca $ note ((+91) <$> (whenmod 32 16 (subtract 8 <$>) . whenmod 12 8 (subtract 4 <$>) . whenmod 8 4 (subtract 5 <$>) . every 3 (negate <$>)) "{12 14 -12 -14 7 9 -17 -15 -17 -19}%16")
+volca $ note ((+79) <$> (whenmod 32 16 (subtract 8 <$>) . whenmod 12 8 (subtract 4 <$>) . whenmod 8 4 (subtract 5 <$>) . every 3 (negate <$>)) "{12 14 -12 -14 7 9 -17 -15 -17 -19}%16")
 |+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
-
+|+| dur "0.15"
 
 volca silence
 
 d1 $ screw $ foldEvery [3,4] (0.25 <~) $ stack [
 sound "~ selfs",
-sound "selfsub(3,8)?" |+| cut "20",
+sound "{self ~ ~}%8" |+| begin "0.5" |+| cut "383" |+| shape "0.5",
 sound (samples "selfkit*8 [~ selfkit*4]" (slow 0.871 $ run 30)) |+| cut "3",
 slow 2 $ sound "selfk*16? [~ selfk]*4",
 sound "[~ selfch]*4 selfoh" |+| speed "1.5"]
