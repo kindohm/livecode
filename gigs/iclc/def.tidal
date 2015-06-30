@@ -12,18 +12,18 @@ volca $ slow 8 $ note "66 68 63 [63 51]/2" |+| dur "2.2"
 volca $ slow 8 $ note ((subtract 12) <$> ("61 [60 63]/2 58 58")) |+| dur "2.2"
 
 -- final ref
-d1 $ screwsafe $ foldEvery [3,4] (0.25 <~) $ stack [
+d1 $ stack [
 slow 4 $ sound (samples "defb*4" "[3 4 5 5]"),
 slow 2 $ sound "~ ~ defdo defdo:1",
 slow 2 $ sound "kl(3,8) [defs kl*4?]" |+| cut "10",
-slow 8 $ striate' 512 (1/100) $ sound "alonevox*2" |+| delay "0.5",
-slow 2 $ sound (samples "defk*4? defs [~ defk]*2? [defs defk? ~ ~]" "[0]/8") |+| gain "0",
+slow 16 $ striate' 1024 (1/200) $ sound "self*2" |+| delay "0.5" |+| gain "0.9",
 slowcat [
 sound (samples "akuma1*8" (irand 5)) |+| cut "1" |+| speed "1.1" |+| shape "0.3",
 sound (samples "akuma2*8" (irand 5)) |+| cut "1" |+| speed "1.1",
 sound (samples "akuma3*8" (irand 5)) |+| cut "1" |+| speed "1.1",
 sound (samples "amenall*8" (irand 30)) |+| cut "1" |+| speed "1.4" |+| shape "0.7"]
 ] |+| delaytime "0.43" |+| delayfeedback "0.5"
+
 
 hush
 volca silence

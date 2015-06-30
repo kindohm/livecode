@@ -8,3 +8,7 @@ slow 2 $ sound (samples "sockfx:0/2 doru*2 c64*2 doru*2 [[peach c64:5]/2 c64] [c
 slow 2 $ sound (samples "~ socksub [~ [socksub socksub]/2] ~" (slow 0.8 $ run 5)) |+| cut "2"]
 
 hush
+
+d4 $ sound "alonevox" |+| cut "1"
+
+hush

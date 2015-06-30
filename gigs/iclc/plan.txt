@@ -1,9 +1,10 @@
 # tentative set list
-alone
-lesss
-socket lever
-def (with intro outro)
+alone (190)
+lesss (190)
+socket lever (175)
+def (210) (with intro outro)
 
+# CREATE A BRANCH WHEN PRACTICING
 
 # work left...
 
