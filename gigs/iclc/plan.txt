@@ -8,9 +8,7 @@ def (210) (with intro outro)
 
 # work left...
 
-- Alone - new drum samples. maybe use selfie?
-- cpr
-- more breaks for def?
+- Alone - new drum samples. maybe use selfie drums?
 - custom "screws" for each track
-- synth for socket lever?
-- change cutoff param in bass module
+- remove socket lever from set?
+- change cutoff param in volca bass module
