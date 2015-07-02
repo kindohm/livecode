@@ -5,21 +5,25 @@ let alone = "0 -7 -10 -14"
 
 volca $ density 2 $ slowcat [
 note ((+98) <$>  (alone)),
-note ((+86) <$> (every 3 (negate <$>))   (alone)),
+note ((+86) <$> (every 3 (id <$>))   (alone)),
 note ((+74) <$> (alone)),
 note ((+62) <$> (alone))]
 |+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
 |+| dur "0.05"
 
 
-d1 $ whenmod 5 3 (jux (iter 4)) $ every 4 (stut 4 0.25 0.25) $ screwsafe $ foldEvery [3,4] (0.25 <~) $ stack [
+d1 $ stack [
 slow 8 $ striate 32 $ sound "scrape",
-slow 2 $ sound "[selfk*2 ~] ~ ~ ~",
-slow 2 $ sound "~ selfs ~ selfkit:1",
+slow 2 $ sound "alk*16?",
+sound "{alcy ~ ~}%1" |+| delay "0.5" |+| coarse "8 16 12" |+| speed "{1 0.8 0.7}%3",
+slow 2 $ sound "~ [~ ~ ~ alsub/3] ~ ~",
+every 3 (slow 2) $ sound "{alch*4 ~ [~ aloh]}%4" |+| cut "101",
+slow 2 $ sound "~ als ~ alcp" |+| shape "0",
 slow 16 $ (striate' 128 (1/100) $ sound (samples "alonevox" "[0 1 2 3 4 5 6 7]/8")) |+| speed "[1, 0.5]" |+| shape "0.5",
-slow 2 $ sound (samples "selfkit*16" (slow 0.813 $ run 30)) |+| shape "0.3" ]
+slow 2 $ sound (samples "alkit*16" (slow 0.813 $ run 30)) |+| shape "0" |+| cut "91"]
+|+| delaytime "0.5" |+| delayfeedback "0.5"
 
-
+d1 $ slow 2 $ sound (samples "alkit*16" (slow 0.813 $ run 30)) |+| shape "0" |+| cut "91"
 
 hush
 

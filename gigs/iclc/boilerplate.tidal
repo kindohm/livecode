@@ -5,5 +5,107 @@ let screw = slowspread ($) [id, rev, (|+| accelerate "-0.5 0.5"), (|+| coarse "3
 let screwsafe = slowspread ($) [id, rev, (|+| accelerate "-0.5 0.5"), (|+| coarse "32 64 16"), id, rip 0.2 0.1, (|+| unit "c"), (|+| speed "1.2 1.5 -1.2 0.8")]
 import Sound.Tidal.MIDI.Output
 import Sound.Tidal.VolcaBass
+import Sound.Tidal.Rytm
 keyStreams <- keyproxy 1 "Scarlett 18i8 USB" bass [1]
+keyStreams <- keyproxy 1 "Scarlett 18i8 USB" keys [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 [volca] <- sequence keyStreams
+[bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,k14,k15,k16] <- sequence keyStreams
+
+k16 $ foldEvery [1,2,3] (slow (8/3)) $
+note (((+35) . (*3)) <$> (every 3 (within (0.5, 1) ((+5) <$>)) . every 2 (within (0, 0.5) (rev)) .  within (0.25, 0.5) (rev))  (slow 2 $ run 16))
+
+k15 $ note ((+47) <$> (whenmod 6 4 (subtract 12 <$>)) "{[0] ~ ~ ~ ~}%2")
+
+k15 silence
+bd silence
+sd silence
+ht silence
+ch silence
+oh silence
+k16 silence
+
+
+bd $ whenmod 20 13 (const $ note "~") $ whenmod 8 4 (density 4) $ foldEvery [2,4,6] (slow (4/3)) $ note "~ 33"
+|+| synth1 (scale 0 1 $ slow 3 sine1)
+|+| synth2 (scale 0.25 0.7 $ slow 2 sine1)
+|+| synth3 (scale 0 1 $ slow 3.13 sine1)
+|+| synth4 (scale 0 1 $ slow 2.82 sine1)
+|+| synth5 (scale 0 1 $ slow 7 sine1)
+|+| synth6 (scale 0 1 $ slow 5.521 sine1)
+|+| synth7 (scale 0 1 $ slow 3.9191 sine1)
+|+| synth8 (scale 0 1 $ slow 6.716 sine1)
+|+| perf1 (scale 0 1 $ slow 5.1 sine1)
+|+| perf2 (scale 0 1 $ slow 6.221 sine1)
+
+sd $ whenmod 16 8 (const $ note "~") $ whenmod 5 3 (density 3) $ foldEvery [2,4,6] (slow (4/3)) $ note "~ 36 [~ 36] ~"
+|+| synth4 (scale 0 1 $ slow 3 sine1)
+|+| synth2 (scale 0 1 $ slow 2 sine1)
+|+| synth5 (scale 0 1 $ slow 3.13 sine1)
+|+| synth1 (scale 0 1 $ slow 2.82 sine1)
+|+| synth3 (scale 0 1 $ slow 7 sine1)
+|+| synth6 (scale 0 1 $ slow 5.521 sine1)
+|+| synth8 (scale 0 1 $ slow 3.9191 sine1)
+|+| synth7 (scale 0 1 $ slow 6.716 sine1)
+|+| perf1 (scale 0 1 $ slow 5.1 sine1)
+|+| perf2 (scale 0 1 $ slow 6.221 sine1)
+
+ht $ whenmod 20 12 (const $ note "~") $ whenmod 10 6 (density 2) $ foldEvery [2,4,6] (density 2) $ note "~ [~ 55]*2"
+|+| synth7 (scale 0 1 $ slow 3 sine1)
+|+| synth6 (scale 0 1 $ slow 2 sine1)
+|+| synth1 (scale 0 1 $ slow 3.13 sine1)
+|+| synth5 (scale 0 1 $ slow 2.82 sine1)
+|+| synth8 (scale 0 1 $ slow 7 sine1)
+|+| synth2 (scale 0.25 1 $ slow 5.521 sine1)
+|+| synth3 (scale 0 1 $ slow 3.9191 sine1)
+|+| synth4 (scale 0 1 $ slow 6.716 sine1)
+|+| perf1 (scale 0 1 $ slow 5.1 sine1)
+|+| perf2 (scale 0 1 $ slow 6.221 sine1)
+
+ch $ whenmod 22 14 (const $ note "~") $ whenmod 5 3 (density 2) $ foldEvery [1,3,5,7] (slow 1.5) $ note "{~ [~ 55]*4 ~}%4"
+|+| synth7 (scale 0 1 $ slow 5 sine1)
+|+| synth6 (scale 0 1 $ slow 3 sine1)
+|+| synth1 (scale 0 1 $ slow 7.13 sine1)
+|+| synth5 (scale 0 1 $ slow 5.82 sine1)
+|+| synth8 (scale 0 1 $ slow 9 sine1)
+|+| synth2 (scale 0 1 $ slow 4.521 sine1)
+|+| synth3 (scale 0 1 $ slow 6.9191 sine1)
+|+| synth4 (scale 0 1 $ slow 4.716 sine1)
+|+| perf1 (scale 0 1 $ slow 5.1 sine1)
+|+| perf2 (scale 0 1 $ slow 6.221 sine1)
+
+ch silence
+oh silence
+sd silence
+bd silence
+
+oh $ whenmod 30 20 (const $ note "~") $ whenmod 8 5 (density 2) $ foldEvery [3,5,7] (slow 2) $ note "{~ [~ 44]*3 ~ ~ 44}%4"
+|+| synth7 (scale 0 1 $ slow 6 sine1)
+|+| synth6 (scale 0 1 $ slow 2 sine1)
+|+| synth1 (scale 0 1 $ slow 5.13 sine1)
+|+| synth5 (scale 0 1 $ slow 3.82 sine1)
+|+| synth8 (scale 0 1 $ slow 2 sine1)
+|+| synth2 (scale 0 1 $ slow 3.521 sine1)
+|+| synth3 (scale 0 1 $ slow 3.9191 sine1)
+|+| synth4 (scale 0 1 $ slow 3.716 sine1)
+
+k13 $ note "36*8"
+|+| deltime (scale 0 0.75 $ slow 3 sine1)
+|+| delpingpong(scale 0 1 $ slow 4.1 sine1)
+|+| delfeedback (scale 0 0.4 $ slow 7 sine1)
+|+| delhpf (scale 0 1 $ slow 2 sine1)
+|+| dellpf (scale 0 1 $ density 3 sine1)
+|+| delrev (scale 0 1 $ sloe 3.5 sine1)
+|+| delvol "1"
+
+k13 silence
+
+ht silence
+
+deltime      = makeF oscKeys "synth1"
+delpingpong  = makeF oscKeys "synth2"
+delwidth     = makeF oscKeys "synth3"
+delfeedback  = makeF oscKeys "synth4"
+delhpf       = makeF oscKeys "synth5"
+dellpf       = makeF oscKeys "synth6"
+delrev       = makeF oscKeys "synth7"
+delvol       = makeF oscKeys "synth8"

@@ -17,10 +17,10 @@ volca $ note ((+79) <$> (whenmod 32 16 (subtract 8 <$>) . whenmod 12 8 (subtract
 volca silence
 
 d1 $ screw $ foldEvery [3,4] (0.25 <~) $ stack [
-sound "~ selfs",
-sound "{self ~ ~}%8" |+| begin "0.5" |+| cut "383" |+| shape "0.5",
-sound (samples "selfkit*8 [~ selfkit*4]" (slow 0.871 $ run 30)) |+| cut "3",
-slow 2 $ sound "selfk*16? [~ selfk]*4",
-sound "[~ selfch]*4 selfoh" |+| speed "1.5"]
+sound "~ als",
+sound "{self ~ ~}%8" |+| begin "0.5" |+| cut "383" |+| shape "0",
+sound (samples "alkit*8 [~ alkit*4]" (slow 0.871 $ run 30)) |+| cut "3",
+slow 2 $ sound "alk*16? [~ alk]*4",
+sound "[~ alch]*4 aloh" |+| speed "1.5"]
 
 hush

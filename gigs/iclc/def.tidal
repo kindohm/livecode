@@ -36,11 +36,8 @@ slow 8 $ sound (samples "defsyn defsyn defsyn ~" "[3 4 5 5 3 6 5 5]/2") |+| gain
 
 
 -- final ref
-d1 $ stack [
-slow 4 $ sound (samples "defb*4" "[3 4 5 5]"),
-slow 2 $ sound "~ ~ defdo defdo:1",
+d2 $ stack [
 slow 2 $ sound "kl(3,8) [defs kl*4?]" |+| cut "10",
-slow 16 $ striate' 1024 (1/200) $ sound "self*2" |+| delay "0.5" |+| gain "0.9",
 slowcat [
 sound (samples "akuma1*8" (irand 5)) |+| cut "1" |+| speed "1.1" |+| shape "0.3",
 sound (samples "akuma2*8" (irand 5)) |+| cut "1" |+| speed "1.1",
