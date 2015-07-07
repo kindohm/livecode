@@ -44,9 +44,9 @@ sound "[~ lessh]*2 [lessh*2 [lessh*2 lessh]]"
 let vari = stack [ sound "[lessk lessh:1]*2 [lesss [lessk lessh:1]] [[lessk lessh:1] lesss] [lessk lessh:1]*2", sound "lessb(3,8)" |+| cut "2", sound "[lesskit0 lesskit0:3]*2 [lesskit0:1 [lesskit0 lesskit0:3]] [[lesskit0 lesskit0:3] lesskit0:1] [lesskit0 lesskit0:3]"]
 
 -- ref
-d1 $ stack [
+d1 $ whenmod 4 2 (const $ vari) $ stack [
 slowcat [
-sound (samples "lesskit0*8" (irand 16)) |+| cut "1" |+| shape "0" |+| speed "1"
+degradeBy 0.25 $ sound (samples "lesskit0*4 [~ lesskit0*4]" (irand 16))  |+| shape "0" |+| speed "1"
 ],
 slow 4 $ sound "lessmel:0",
 sound "~ lesss",
@@ -58,6 +58,10 @@ slow 2 $ sound "[lessk lessh:1]*4 ~ ~ ~",
 sound "[~ lessh]*2 [lessh*2 [lessh*2 lessh]]" ]
 
 let vari = stack [ sound "[lessk lessh:1]*2 [lesss [lessk lessh:1]] [[lessk lessh:1] lesss] [lessk lessh:1]*2", sound "lessb(3,8)" |+| cut "2", sound "[lesskit0 lesskit0:3]*2 [lesskit0:1 [lesskit0 lesskit0:3]] [[lesskit0 lesskit0:3] lesskit0:1] [lesskit0 lesskit0:3]"]
+
+
+d1 $ foldEvery [3,4] (0.25 <~) $ sound (samples "lesskit0*8" (irand 16)) |+| cut "1" |+| shape "0" |+| speed "1"
+
 
 hush
 volca silence

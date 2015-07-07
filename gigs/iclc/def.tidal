@@ -46,5 +46,26 @@ sound (samples "amenall*8" (irand 30)) |+| cut "1" |+| speed "1.4" |+| shape "0.
 ] |+| delaytime "0.43" |+| delayfeedback "0.5"
 
 
+d2 $ whenmod 30 25 (trunc 0.25) $ whenmod 10 8 (trunc 0.25) $
+whenmod 12 8 (2.5 <~) $
+every 13 (|+| speed "0.5, 1") $
+every 13 (|+| accelerate "-0.5 0.5") $
+every 11 (|+| speed "0.75 -0.8") $
+whenmod 9 7 (jux (iter 4)) $
+every 10 (rip' 0 1 8 0.2 0.1) $ every 7 (rip 0.2 0.1) $ every 6 (|+| speed "1.2 1.5 -1.2 0.8") $
+every 5 (|+| coarse "16 8 32") $ foldEvery [3,4] (0.25 <~) $
+slowcat [
+sound (samples "akuma1*8" (irand 5)) |+| speed "1.1" |+| shape "0.3",
+sound (samples "teeny3*8" (irand 5)) |+| speed "1.1",
+sound (samples "akuma2*8" (irand 5))  |+| speed "1.1",
+sound (samples "ion3*8" (irand 5)) |+| speed "1.1",
+sound (samples "fur1*8" (irand 5))  |+| speed "1.1",
+sound (samples "nu*8" (irand 5))  |+| speed "1.1",
+sound (samples "brkh3*8" (irand 5)) |+| speed "1.1",
+sound (samples "teeny2*8" (irand 5))  |+| speed "1.1",
+sound (samples "teeny1*8" (irand 5))  |+| speed "1.1",
+sound (samples "amenall*8" (irand 30))  |+| speed "1.4" |+| shape "0.7"]
+
+
 hush
 volca silence
