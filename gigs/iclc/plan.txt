@@ -12,3 +12,12 @@ def (210) (with intro outro)
 - custom "screws" for each track
 - remove socket lever from set?
 - change cutoff param in volca bass module
+
+
+# PLAN B
+- 5/4 kick 120bpm thing. 7/4 "self" synth. cpr's, ch's, percs, the whole thing
+- lesss
+- def
+- intro/synthimprov / socket lever
+
+could put the intro before less or def too, really. whatever.
