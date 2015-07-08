@@ -16,10 +16,11 @@ volca $ slow 4 $ note ("[55 [~ 60] ~ 53 [~ 46] ~ ~ ~] [50 [~ 53] ~ 48 ~ ~ ~ ~]")
 |+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
 
 -- intro
-d2 $ foldEvery [3,4] (0.25 <~) $ slow 16 $ (spread' (striate' 512) (scale 0.001 0.01 $ slow 1 sine1) $ sound "elevator*2")
-|+| speed "[[1 0.9 1.2 0.8]*2, [0.5 0.75 0.25]*3]" |+| gain "0.9" |+| delay "0.4" |+| delaytime "0.1" |+| delayfeedback (scale 0.5 0.97 $ density 8 sine1)
+d3 $ foldEvery [3,4] (0.25 <~) $ slow 16 $ (spread' (striate' 512) (scale 0.001 0.01 $ slow 1 sine1) $ sound "elevator*2")
+|+| speed "[[1 0.9 1.2 0.8]*2, [0.5 0.75 0.25]*3]" |+| gain "0.8" |+| delay "0.4" |+| delaytime "0.1" |+| delayfeedback (scale 0.5 0.97 $ density 8 sine1)
 
 -- try writing some code here. put mel on its own d
+
 
 -- bass
 slow 2 $ sound "lessb" |+| cut "2",
