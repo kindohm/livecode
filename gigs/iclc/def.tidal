@@ -8,8 +8,8 @@ SUSTAIN ON/OFF
 -}
 
 -- bass
-volca $ slow 8 $ note "66 68 63 [63 51]/2" |+| dur "2.2"
-volca $ slow 8 $ note ((subtract 12) <$> ("61 [60 63]/2 58 58")) |+| dur "2.2"
+bass $ slow 8 $ note "66 68 63 [63 51]/2" |+| dur "2.2"
+bass $ slow 8 $ note ((subtract 12) <$> ("61 [60 63]/2 58 58")) |+| dur "2.2"
 
 -- support #1
 d1 $ stack [
@@ -68,4 +68,4 @@ sound (samples "amenall*8" (irand 30))  |+| speed "1.4" |+| shape "0.7"]
 
 
 hush
-volca silence
+bass silence

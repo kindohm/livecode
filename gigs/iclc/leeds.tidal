@@ -1,12 +1,13 @@
 bps (190/120)
 
-volca $ slow 8 $
-note ((+43) <$> ("[0 ~ ~ 29] [2 ~ 33 41] [12 ~ 53 48] [2 ~ [36 41] 31]"))
+bass $
+note ((+43) <$> (foldEvery [4,5] (subtract 12 <$>) .  foldEvery [2,3] ((+12) <$>)) ("[[0 ~ ~ 29] [2 ~ 33 41] [12 ~ 53 48] [2 ~ [36 41] 31]]/8"))
 |+| dur "[3 0.1 1 1]*4"
 |+| pitch1 "0"
 |+| pitch2 "0.07"
-|+| lforate "0.1"
-|+| lfoint "0.1"
+|+| pitch3 "0.93"
+|+| lforate (scale 0 1 $ slow 7 sine1)
+|+| lfoint (scale 0 1 $ slow 6 sine1)
 
 d1 $ screw $ foldEvery [3,4] (3.25 <~) $ stack [
 sound "~ cp:3 [~ cp:3] ~",
@@ -21,4 +22,4 @@ whenmod 5 3 (jux (iter 4)) $ every 3 (density 2) $ sound "~ k:8*2"]
 hush
 
 
-volca silence
+bass silence

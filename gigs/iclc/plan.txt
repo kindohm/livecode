@@ -15,9 +15,9 @@ def (210) (with intro outro)
 
 
 # PLAN B
-- 5/4 kick 120bpm thing. 7/4 "self" synth. cpr's, ch's, percs, the whole thing
+- leeds intro -> socket lever
 - lesss
 - def
-- intro/synthimprov / socket lever
+- "intro" w double bass improv thing
 
 could put the intro before less or def too, really. whatever.

@@ -3,7 +3,7 @@ bps (190/120)
 
 let alone = "0 -7 -10 -14"
 
-volca $ density 2 $ slowcat [
+bass $ density 2 $ slowcat [
 note ((+98) <$>  (alone)),
 note ((+86) <$> (every 3 (id <$>))   (alone)),
 note ((+74) <$> (alone)),
@@ -27,4 +27,4 @@ d1 $ slow 2 $ sound (samples "alkit*16" (slow 0.813 $ run 30)) |+| shape "0" |+|
 
 hush
 
-volca silence
+bass silence

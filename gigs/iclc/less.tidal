@@ -7,11 +7,11 @@ AMP EG ON
 -}
 
 -- bass
-volca $ slow 4 $ note "[55 [~ 60] ~ 53 [~ 46/2] ~ ~ ~] ~"
+bass $ slow 4 $ note "[55 [~ 60] ~ 53 [~ 46/2] ~ ~ ~] ~"
 |+| lforate "0.5" |+| lfoint "0.04" |+| attack "0" |+| decay "1"
 |+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
 
-volca $ slow 4 $ note ("[55 [~ 60] ~ 53 [~ 46] ~ ~ ~] [50 [~ 53] ~ 48 ~ ~ ~ ~]")
+bass $ slow 4 $ note ("[55 [~ 60] ~ 53 [~ 46] ~ ~ ~] [50 [~ 53] ~ 48 ~ ~ ~ ~]")
 |+| lforate "0.5" |+| lfoint "0.04" |+| attack "0" |+| decay "1"
 |+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
 
@@ -65,4 +65,4 @@ d1 $ foldEvery [3,4] (0.25 <~) $ sound (samples "lesskit0*8" (irand 16)) |+| cut
 
 
 hush
-volca silence
+bass silence
