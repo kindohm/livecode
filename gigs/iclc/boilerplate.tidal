@@ -9,21 +9,3 @@ import Sound.Tidal.Rytm
 --keyStreams <- keyproxy 1 "Scarlett 18i8 USB" bass [1]
 keyStreams <- keyproxy 1 "Scarlett 18i8 USB" [(bass, 1)]
 [bass] <- sequence keyStreams
-
-bps (190/120)
-
-bass $ slow 8 $
-note ((+43) <$> ("[0 ~ ~ 29] [2 ~ 33 41] [12 ~ 53 48] [2 ~ [36 41] 31]"))
-|+| dur "[3 0.1 1 1]*4"
-|+| pitch1 "0"
-|+| pitch2 "0.65"
-|+| lforate "0.1"
-|+| lfoint "0.07"
-
-
-d1 $ foldEvery [3,4] (0.25 <~) $ stack [
-every 5 (|+| coarse "8") $ every 3 (|+| vowel "e") $ sound "cpr/4" |+| speed "[1 0.8 0.6]/2",
-sound "~ ki*4? k:3*2? ki:1*2" |+| cut "32"]
-
-bass silence
-d1 silence

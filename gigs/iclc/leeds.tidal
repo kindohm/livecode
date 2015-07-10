@@ -6,8 +6,6 @@ note ((+43) <$> (foldEvery [4,5] (subtract 12 <$>) .  foldEvery [2,3] ((+12) <$>
 |+| pitch1 "0"
 |+| pitch2 "0.07"
 |+| pitch3 "0.93"
-|+| lforate (scale 0 1 $ slow 7 sine1)
-|+| lfoint (scale 0 1 $ slow 6 sine1)
 
 d1 $ screw $ foldEvery [3,4] (3.25 <~) $ stack [
 sound "~ cp:3 [~ cp:3] ~",
