@@ -1,5 +1,10 @@
 bps (190/120)
 
+d2 $ slow 8 $ (striate 64 $ sound (samples "intro" (slow 4 $ run 4)) |+| unit "c" |+| speed "0.1225")
+|+| cutoff (scale 0.01 0.1 $ sine1) |+| resonance "0.1"
+
+
+
 -- reference. oh geez. is anyone actually going to enjoy this?
 d1 $ whenmod 20 12 (slow (1.5)) $
 whenmod 6 3 (trunc 0.75) $

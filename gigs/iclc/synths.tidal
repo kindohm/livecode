@@ -1,0 +1,17 @@
+-- detuned
+bass $
+note ((+43) <$> ("[[0 ~ ~ 29] [2 ~ 33 41] [12 ~ 53 48] [2 ~ [36 41] 31]]/8"))
+|+| dur "[3 1 1 1]*4"
+|+| pitch1 "0"
+|+| pitch2 "0.07"
+|+| pitch3 "0.93"
+
+-- in seven...
+bass $ note ((+79) <$> (id) "{12 14 -12 -14 7 9 -17 -15 -17 -19}%16")
+|+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
+|+| dur "0.15"
+|+| slide "0"
+
+-- wtf is this?
+bass $ slow 2 $ foldEvery [2,3,4] (slow (2)) $ note ((subtract 12 <$>) $ whenmod 32 16 (subtract 8 <$>) $ whenmod 8 4 (subtract 5 <$>) $ "[77 85]*24 [65 101]*6")
+|+| dur "0.1"
