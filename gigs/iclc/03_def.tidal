@@ -12,14 +12,32 @@ bass $ slow 8 $ note "66 68 63 [63 51]/2" |+| dur "2.2"
 bass $ slow 8 $ note ((subtract 12) <$> ("61 [60 63]/2 58 58")) |+| dur "2.2"
 
 
+d2 $ slowspread ($) [id, rev, (|+| accelerate "-0.5 0.5"), (|+| coarse "32 16 24"), (|+| speed "1.2 -1.2 1.5 0.8"),
+chop 16] $
+foldEvery [3,4] (0.25 ~>) $ stack [
+degradeBy 0.7 $ slowcat [
+sound (samples "funky*8" (irand 30)) |+| speed "2" |+| shape "0.8",
+sound (samples "teeny1*8" (irand 30)) |+| speed "1.1" |+| shape "0.5",
+sound (samples "teeny2*8" (irand 30)) |+| speed "1.1" |+| shape "0.5",
+sound (samples "amenall*8" (irand 30)) |+| speed "1.1" |+| shape "0.5",
+sound (samples "akuma1*8" (irand 5)) |+| speed "1.1" |+| shape "0.5",
+sound (samples "akuma2*8" (irand 5)) |+| speed "1.1"  |+| shape "0.5"],
+slow 2 $ sound "kl:1(3,8) [defs sc]" |+| cut "1",
+sound "cpr/5" ]
+
+
+
 d2 $ stack [
 slow 8 $ sound (samples "defb*4" "[3 4 5 5 3 6 5 5]/2"),
 slow 2 $ sound "~ ~ defdo defdo:1" ]
+
 
 -- support #1
 d1 $ stack [
 slow 8 $ sound (samples "defb*4" "[0 1 2 2]") |+| speed "[1 1 1 [1 0.5]/2]*2",
 slow 16 $ sound "gnarl gnarl:1" ]
+
+d3 silence
 
 -- support #2
 d1 $ stack [
@@ -29,7 +47,7 @@ slow 2 $ sound "~ ~ defdo defdo:1" ]
 -- support #3
 d1 $ stack [
 slow 8 $ sound (samples "defsyn defsyn defsyn ~" "[0 1 2 2]")
-|+| cutoff "0.01" |+| resonance "0.01" |+| delay "0.5" |+| delaytime "0.43" |+| delayfeedback "0.3" |+| gain "1.5",
+|+| cutoff "0.3" |+| resonance "0.01" |+| delay "0.5" |+| delaytime "0.43" |+| delayfeedback "0.3" |+| gain "1.5",
 slow 16 $ sound "gnarl gnarl:1" |+| nudge "1"]
 
 -- support #4

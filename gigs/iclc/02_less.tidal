@@ -19,19 +19,15 @@ bass $ slow 4 $ note ("[55 [~ 60] ~ 53 [~ 46] ~ ~ ~] [50 [~ 53] ~ 48 ~ ~ ~ ~]")
 
 -- intro
 d3 $ foldEvery [3,4] (0.25 <~) $ slow 16 $ (spread' (striate' 512) (scale 0.001 0.01 $ slow 1 sine1) $ sound "elevator*2")
-|+| speed "[[1 0.9 1.2 0.8]*2, [0.5 0.75 0.25]*3]" |+| gain "0.8" |+| delay "0.4" |+| delaytime "0.1" |+| delayfeedback (scale 0.5 0.97 $ density 8 sine1)
+|+| speed "[[1 0.9 1.2 0.8]*2, [0.5 0.75 0.25]*3]" |+| gain "0.5" |+| delay "0.4" |+| delaytime "0.1" |+| delayfeedback (scale 0.5 0.97 $ density 8 sine1)
 
 -- try writing some code here. put mel on its own d
-d1 $ every 4 (rev) $ every 5 (|+| accelerate "-0.5 0.5") $ every 6 (stut 8 0.2 0.25) $
-every 7 (|+| coarse "8 4 12") $ every 9 (trunc 0.25) $
-foldEvery [3,4] (5.25 ~>) $
-stack [
-degrade $ slowcat [
-sound (samples "brkh1*8" (irand 16)) |+| gain "1",
-sound (samples "brkh2*8" (irand 16)) |+| gain "1",
-sound (samples "lesskit0*8" (run 10)) |+| gain "1"] |+| speed "2" ]
-hush
 
+d1 $ foldEvery [3,4] (0.75 <~) $ stack [
+slow 2 $ sound (samples "lesskit1*16" (irand 16)),
+slow 32 $ striate' 256  (1/40) $ sound "lessv" |+| gain "0.9"]
+|+| cutoff "0.01" |+| resonance "0.1"
+d1 silence
 -- bass
 slow 2 $ sound "lessb" |+| cut "2",
 
