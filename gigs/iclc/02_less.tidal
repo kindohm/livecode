@@ -1,21 +1,15 @@
 bps (190/120)
 
-{-
-volca bass settings:
-VCO group 1/3
-AMP EG ON
--}
-
 -- bass
 bass $ slow 4 $ note "[55 [~ 60] ~ 53 [~ 46/2] ~ ~ ~] ~"
 |+| lforate "0.1" |+| lfoint (scale 0.5 1 $ slow 2 sine1) |+| attack "0" |+| decay "1"
 |+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
-|+| dur "3"
+|+| dur "0.5"
 
 bass $ slow 4 $ note ("[55 [~ 60] ~ 53 [~ 46] ~ ~ ~] [50 [~ 53] ~ 48 ~ ~ ~ ~]")
-|+| lforate "0.5" |+| lfoint "0.04" |+| attack "0" |+| decay "1"
+|+| lforate "0.1" |+| lfoint "0.3" |+| attack "0" |+| decay "1"
 |+| pitch1 "0" |+| pitch2 "0.07" |+| pitch3 "0.93"
-|+| dur "0.5"
+|+| dur "0.1"
 
 -- intro
 d3 $ foldEvery [3,4] (0.25 <~) $ slow 16 $ (spread' (striate' 512) (scale 0.001 0.01 $ slow 1 sine1) $ sound "elevator*2")
@@ -23,11 +17,7 @@ d3 $ foldEvery [3,4] (0.25 <~) $ slow 16 $ (spread' (striate' 512) (scale 0.001 
 
 -- try writing some code here. put mel on its own d
 
-d1 $ foldEvery [3,4] (0.75 <~) $ stack [
-slow 2 $ sound (samples "lesskit1*16" (irand 16)),
-slow 32 $ striate' 256  (1/40) $ sound "lessv" |+| gain "0.9"]
-|+| cutoff "0.01" |+| resonance "0.1"
-d1 silence
+
 -- bass
 slow 2 $ sound "lessb" |+| cut "2",
 
