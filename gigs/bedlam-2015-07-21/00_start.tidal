@@ -1,0 +1,30 @@
+let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+let rip' a b c d e p = within (a, b) (slow 2 . rev . stut c d e) p
+let up = speed . ((1.059466**) <$>)
+let screw = slowspread ($) [id, rev, (|+| accelerate "-0.5 0.5"), (|+| coarse "32 64 16"), rip 0.2 0.1, gap 4, (|+| unit "c"), rip' 0 1 8 0.2 0.1, (|+| speed "1.2 1.5 -1.2 0.8"), chop 16, stut 4 0.25 0.25]
+let screwsafe = slowspread ($) [id, rev, (|+| accelerate "-0.5 0.5"), (|+| coarse "32 64 16"), id, rip 0.2 0.1, (|+| unit "c"), (|+| speed "1.2 1.5 -1.2 0.8")]
+import Sound.Tidal.MIDI.Output
+import Sound.Tidal.SimpleSynth
+keyStreams <- keyproxy 1 "Scarlett 18i8 USB" [(keys, 1)]
+[brute] <- sequence keyStreams
+
+bps (200/120)
+
+-- the beginning
+d3 $ slow 8 $ (zoom (0, 0.5) $ striate' 256 (1/100) $ sound (samples "intro" (slow 4 $ run 4)))
+|+| cutoff "0.1" |+| resonance "0.1"
+|+| delay "0.5" |+| delaytime "0.5" |+| delayfeedback "0.4" |+| gain "0.9"
+
+-- vocoder acid
+brute $ note ((+44) <$> (every 3 ((subtract 4) <$>) . every 2 ((subtract 3) <$>)) ("{0 2 0 -1 -6*2}%8"))
+
+-- something
+d1 $ whenmod 6 3 (iter 4) $ foldEvery [3,4] (0.25 <~) $ stack [
+foldEvery [2,3,4] (5.75 ~>) $ slow 4 $ sound (samples "{brkh2*8 brkh1*8 think*8 funky*8}%4" (irand 16)) |+| speed "{1 1 2 2}%4" |+| shape "{0 0.3 0.3}%4",
+sound "{heem ~ ~}%1" |+| shape "0.3" |+| speed "0.1225",
+sound "cpr/2" |+| coarse "16",
+slow 4 $ sound "~ ~ ~ melt" |+| coarse "32" |+| cut "1" |+| gain "0.8",
+jux (iter 4) $ slow 2 $ sound (samples "fk*16 shard:8" (run 30)) ]
+
+hush
+brute silence
