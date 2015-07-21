@@ -2,19 +2,18 @@ bps (160/120)
 
 -- a[n], peri, tite, percg, fall, ow, fk, ch, laz, melt, ktite, stite,
 
-
-d1 $
-foldEvery [2,3,4,5] (0.25 ~>) $
+d1 $ every 5 (|+| coarse "16 8 32") $
+foldEvery [2,3,4,5] (7.25 ~>) $
 slowcat [
 sound "{[a1, fk:1] [k stite]/2 [ch,b2]}%16",
 sound (samples "{[oh, k:11] [drop stite:3]/2 [ridefx]/2}%16" (slow 0.81 $ run 20)) |+| cut "3",
 sound "{[a3, fk:10] [ow1 stite:7]/2 [8ch]}%16",
 sound "{[fall, kh:7] [ch] [b3]}%16" |+| cut "5",
 sound (samples "{[a4] [laz] [b]}%16" (run 30)) |+| cut "7",
-sound (samples "{[kh [melt, ktite]]/2 [a1]}%16" (run 30)) ]
+sound (samples "{[kh [melt, ktite]]/2 [a1]}%16" (run 30)) |+| coarse "8" |+| shape "0.2"]
 
-d2 $ screw $ foldEvery [3,4] (5.25 ~>) $ density 2 $ stack [
-slow 2 $ sound "[fk:3*2 sub/2] sna:1",
+d2 $ stack [
+sound "[fk:23*4? sub/4] sna:1",
 foldEvery [2,3,4] (density 2) $ sound "8ch*4" ]
 
 hush

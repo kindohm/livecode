@@ -1,0 +1,8 @@
+bps (180/120)
+
+d1 $ stack [
+sound (samples "fk*16?" (run 20)),
+(whenmod 8 4 (const $ sound "electrowave*16?" |+| coarse "{16 32 24}%16") $ sound "laz:1*16?"
+|+| speed "{0.5 1 0.25}%16") |+| cut "1" ]
+
+hush
