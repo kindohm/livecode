@@ -1,6 +1,9 @@
 bps (170/120)
 
-d1 $ stack [
-jux (iter 4) $
-slowspread (superimpose) [(|+| speed "-2"), (|+| coarse "{8 32 16}%16")] $
-slow 2 $ sound "[[kl:3*2, ch:6*2] [kl:3(3,8), ch:6(3,8)]]" ]
+
+d1 $
+foldEvery [3,4] (0.25 <~) $
+stack [
+slowspread (slow) [8,16,32] $
+striate 128 $ sound "run:3" |+| gain "0.8" |+| delay "0.4"]
+|+| delaytime "0.5" |+| delayfeedback "0.5"

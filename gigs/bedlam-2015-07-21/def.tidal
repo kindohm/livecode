@@ -5,14 +5,13 @@ bass $ slow 8 $ note "66 68 63 [63 51]/2" |+| dur "2.2"
 bass $ slow 8 $ note ((subtract 12) <$> ("61 [60 63]/2 58 58")) |+| dur "2.2"
 
 -- start here, lazy bones...
-d1 $ stack [
-slow 2 $ sound "kl:1(3,8) defs" |+| gain "0.9 1",
-degrade $ every 2 (slow 2) $ slowcat [
-sound (samples "defkit1*16" (irand 20)) |+| end "0.5" |+| speed "1",
-sound (samples "defkit2*16" (irand 20)) |+| end "0.5" |+| speed "1"] |+| cutoff (scale 0.05 0.2 $ slow 3 sine1) |+| resonance "0.4",
+
+
+d1 $
+stack [
+jux (iter 4) $ slow (4/3) $ sound "~ ride" |+| gain "0.7" |+| speed "0.8",
 slow 8 $ sound (samples "defb*4" "[3 4 5 5 3 6 5 5]/2"),
-slow 16 $ sound "gnarl:2 gnarl:3",
-slow 2 $ sound "~ ~ defdo defdo:1" ]
+slow 16 $ sound "gnarl:2 gnarl:3"]
 
 -- support #1
 d1 $ stack [
