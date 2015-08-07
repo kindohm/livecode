@@ -5,38 +5,10 @@ bass $ note ((+56) <$> (every 3 ((subtract 4) <$>) . every 2 ((subtract 3) <$>))
 |+| pitch1 "0"
 |+| pitch2 "0.07"
 
-d1 $
-stack [
-sound "{[heem hawk]/2 ~ ~}%1" |+| cut "81" |+| shape "0.3" |+| speed "0.1225",
-sound "cpr/2" |+| coarse "{16 24 32}%8"
-|+| speed "{0.9 0.8 1 0.75 0.85}%16" |+| gain "1"]
-
-hush
-
-
-hey thanks for watching and listening.
-I can type more if you'd like...
-but no more music....
-how long will I do this....
-nobody in the back has any idea what is going on...
-
-
-
-ok thanks
-
-
-kindohm.com
-
-
-
-
-
-
-
-d2 $ density 32 $ density 2 $ stack [
-sound "ktite*4?" |+| cut "20",
-whenmod 4 2 (const $ sound "electrowave*4?" |+| cut "3") $
-sound "laz:1*4?" |+| cut "3" ]
-|+| delay "0.8" |+| delaytime "0.5" |+| delayfeedback "0.9"
-
-d2 silence
+d1 $ whenmod 6 3 (iter 4) $ foldEvery [3,4] (0.25 <~) $ stack [
+foldEvery [2,3,4] (5.75 ~>) $ slow 4 $ sound (samples "{brkh3*8 ion2*8 nu*8 think*8 funky*8}%4" (irand 16))
+|+| speed "{1 1 1 2 2}%4" |+| shape "{0 0.1 0.3 0.3}%4",
+sound "{heem ~ ~}%1" |+| shape "0.3" |+| speed "0.1225",
+sound "cpr/2" |+| coarse "{16 24 32}%8" |+| speed "{0.9 0.8 1 0.75 0.85}%16",
+slow 4 $ sound "~ ~ ~ melt" |+| coarse "32" |+| cut "1" |+| gain "0.8",
+jux (iter 4) $ slow 2 $ sound (samples "fk*16 shard:8" (run 30)) ]

@@ -1,15 +1,9 @@
 bps (155/120)
 
-bps (210/120)
-
-d1 $
-stack [
-slow 4 $ sound "{[run heem]/2 ~ ~}%4" |+| delay "0.5" |+| speed "{0.1225}%1"]
-|+| delaytime "0.4" |+| delayfeedback "0.8"
-
-
-can anybody read this???
-
-thanks for coming out
-
-how about that Josh Gumiela guy with the freaking block of ice???
+d1 $ stack [
+sometimes (slow 2) $ superimpose (|+| coarse "{8 16 24}%4") $ sound "electrowave*8"
+|+| begin (scale 0 0.7 $ rand) |+| cut "1"
+|+| speed "0.9",
+sound "fk:1*8?",
+jux (iter 8) $ stut 2 0.5 0.25 $ sound "~ cp:1",
+sound "ch:4*4" |+| gain "0.8"]
