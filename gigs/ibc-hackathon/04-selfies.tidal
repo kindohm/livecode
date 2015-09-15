@@ -1,0 +1,9 @@
+bps (200/120)
+
+volca $ note ((+56) <$> (every 3 ((subtract 4) <$>) . every 2 ((subtract 3) <$>)) ("{0 2 0 -1 -6*2}%8"))
+|+| dur "0.03"
+|+| pitch1 "0"
+|+| pitch2 "0.07"
+|+| slide "0.3"
+
+volca silence
