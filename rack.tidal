@@ -1,0 +1,4 @@
+import Sound.Tidal.MIDI.Output
+import Sound.Tidal.MidiRack
+keyStreams <- midiproxy 1 "Scarlett 18i8 USB" [(rack, 1),(rack, 2),(rack, 3),(rack, 4),(rack, 5),(rack, 6),(rack, 7),(rack, 8),(rack, 9),(rack, 10),(rack, 11),(rack, 12),(rack, 13),(rack, 14),(rack, 15),(rack, 16)]
+[bd,sd,rs,cp,bt,lt,mt,ht,ch,oh,cy,cb,k13,brute,bass,keys] <- sequence keyStreams
