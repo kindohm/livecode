@@ -10,3 +10,8 @@ let runnow d p = do now <- getNow
 runnow d1 $ seqP [(0,4,sound "bm1(3,8)"),(2,6,sound "bm2(5,8)")]
 
 runnow d1 $ every 3 (|+| speed "2") $ sound "break1*4"
+
+-- requires 0.6-dev branch
+let stut'::Integer->Time->(OscPattern->OscPattern)->OscPattern->OscPattern
+    stut' steps steptime f p | steps <= 0 = p
+                             | otherwise = overlay (f (steptime ~> stut' (steps-1) steptime f p)) p
