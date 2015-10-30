@@ -1,0 +1,18 @@
+import Sound.Tidal.MIDI.Output
+import Sound.Tidal.SimpleSynth
+
+bps (220/120)
+
+keyStreams <- midiproxy 1 "LoopBe Internal MIDI" [(keys, 1)]
+[k1] <- sequence keyStreams
+
+k1 $ note (((+55) <$>) $ whenmod 8 4 ((subtract 3) <$>) $  preplace(1,10) "{0 0 0*2 0 0*2 [~ 0] 0*2 0*2 0*2 [~ 0]}%4" "0 0 1 0 1 0 0 1 15 0 -2 24")
+|+| dur "1"
+
+d1 $ sound (samples "{[kh] kh kh*2 kh kh*2 [~ kh] kh*2 kh*2 kh*2 [~ kh]}%4" "3") |+| nudge "0.05" |+| shape "0.4"
+
+d2 $ sound "{cp*2 ~ ~ ~ ~}%4" |+| nudge "0.05" |+| shape "0.8"
+
+hush
+
+k1 silence
