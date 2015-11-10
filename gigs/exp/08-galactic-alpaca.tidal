@@ -4,7 +4,7 @@ bps (200/120)
 d1 $ stack [
 sound (samples "d4*2" "[0]") |+| cut "1" |+| speed "[1]",
 density 2 $ sound (samples "fk [~ fk]" (run 33)) |+| gain "1" |+| shape "0.3",
-density 2 $ sound (samples "keys2b*4" (run 4)) |+| gain "0.9"
+density 2 $ sound (samples "alpkeys*4" (run 4)) |+| gain "0.9"
 |+| shape "0.4" |+| delay "0.1",
 foldEvery [2,3,4] (density 2) $ sound "alpch*4" |+| gain "0.9"
 ] |+| delaytime "0.25" |+| delayfeedback "0.5"
