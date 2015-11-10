@@ -1,0 +1,12 @@
+cps 0.5
+
+d1 $ slow 8 $ (superimpose (slow 1.04 . sometimes(rev))) $ ((|+| cutoff (scale 0.001 0.3 $ density 2 sine1)) $ zoom (0, 0.5) $ striate' 1000 (1/10) $
+sound (samples "keys2*3" (foldEvery [2,3,4] (0.25 ~>) $ run 30)))
+|+| speed (foldEvery [2,3,4] (density 2) $ "[{0.25 1 0.5}%128, {0.5 0.75 1.25 1.75 2.5}%64]")
+|+| delay (scale 0.1 0.5 $ sine1)
+|+| delaytime (scale 0.001 0.4 $ density 1.5 sine1)
+|+| delayfeedback (scale 0.5 0.98 $ density 1.217 sine1)
+|+| resonance "0.5"
+|+| coarse "{0 4 0 2 0 8 12 64 32 16 0}%16"
+|+| crush (sometimes ((negate) <$>) $ scale 1 7 $ density 2.1 sine1)
+|+| shape (scale 0 0.4 $ density 1.23 sine1)
