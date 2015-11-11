@@ -3,30 +3,50 @@ bps (180/120)
 -- intro
 d1 $ stack [
 whenmod 12 6 (density (4/3)) $ every 3 (density 2) $
-degradeBy 0.6 $ sound "~ b18b*2" |+| gain "1.05" |+| shape "0.1" |+| cut "2",
-every 4 (|+| speed "2 0.5") $ whenmod 5 3 (density 2) $ whenmod 6 4 (stut 4 0.75 0.25) $ sound "[~ ulh]*4" ]
+degradeBy 0.6 $ sound "~ b18b*2" |=| gain "1.05" |=| shape "0.1" |=| cut "2",
+every 4 (|=| speed "2 0.5") $ whenmod 5 3 (density 2) $ whenmod 6 4 (stut 4 0.75 0.25) $ sound "[~ ulh]*4" ]
 
 {-
-slipk
-teks
-kits 2-8
 slipcy
+add b18b:1
+kits 2-8
+teks
+slipk
 -}
 
-
+d1 $ whenmod 5 3 (jux (iter 4)) $
+every 5 (gap 4) $ every 6 (chop 8) $
+every 7 (striate 8 . slow (8/3) . rev) $
+every 8 (rip' 0 1 8 0.2 0.1) $
+every 9 (spike') $
+whenmod 9 7 (stut' 2 0.25 (|*| speed "2")) $
+every 4 (stut 4 0.25 0.125) $
+whenmod 10 8 (iter 4) $
+whenmod 16 14 (trunc 0.25) $
+foldEvery [2,4,6] (5.25 <~) $
+stack [
+sound (samples "{[~ slipk]*2 ~ slipk*4? slipk ~ [~ slipk]}%4" (run 20)),
+sound "slipcy/3",
+ghost $ sound "~ teks [~ teks] ~",
+whenmod 8 4 (const $ sound (samples "{kit5 kit6*2 [~ kit7] [~ kit6]*2 kit8}%4" (slow 0.81 $ run 30)) |+| cut "20") $
+sound (samples "{kit2 kit3*2 [~ kit2] [~ kit3]*2 kit4}%4" (slow 0.81 $ run 30)) |+| cut "20",
+whenmod 12 6 (density (4/3)) $ every 3 (density 2) $
+degradeBy 0.6 $ whenmod 40 20 (const $ sound "~ b18b:1*2") $
+sound "~ b18b*2" |=| gain "1.05" |=| shape "0.1" |=| cut "2",
+every 4 (|=| speed "2 0.5") $ whenmod 5 3 (density 2) $ whenmod 6 4 (stut 4 0.75 0.25) $ sound "[~ ulh]*4" ]
 
 -- simpler...
 d1 $
 stack [
-every 5 (const $ sound "~") $ whenmod 16 12 (const $ sound "~ teks [~ teks] ~") $ sound "~ teks" |+| speed "0.8" |+| gain "0.9",
+every 5 (const $ sound "~") $ whenmod 16 12 (const $ sound "~ teks [~ teks] ~") $ sound "~ teks" |=| speed "0.8" |=| gain "0.9",
 whenmod 25 20 (const $ sound "~") $ whenmod 6 4 (degrade) $ every 2 (density 2) $
-sound "{~ slipk:2 [~ slipk:2] ~ slipk*2 slipk:1*2}%4" |+| hcutoff "0.005" |+| hresonance "0.01",
-whenmod 28 18 (const $ sound "~") $ every 3 (|+| speed "[2,-1.5]") $
+sound "{~ slipk:2 [~ slipk:2] ~ slipk*2 slipk:1*2}%4" |=| hcutoff "0.005" |=| hresonance "0.01",
+whenmod 28 18 (const $ sound "~") $ every 3 (|=| speed "[2,-1.5]") $
 slow 2 $ within (0.5, 0.75) (stut 8 0.25 1) $
 whenmod 40 20 (const $ sound (samples "{[kit5 kit6]*2 [kit7 kit5]*2 [[kit6 kit7]/2 kit5]*2}%4" (slow 0.813 $ run 20))) $
 sound (samples "slipcy/2 kit3*4 kit2 kit4*8" (slow 0.8181 $ run 30)),
 whenmod 13 11 (const $ sound "~") $ whenmod 12 6 (density (4/3)) $ every 3 (density 2) $
 whenmod 40 20 (const $ sound "~ b18b:1*2"
-|+| cut "2" |+| gain "1") $
-sound "~ b18b*2" |+| gain "1.05" |+| shape "0.1" |+| cut "2",
-every 4 (|+| speed "2 0.5") $ whenmod 5 3 (density 2) $ whenmod 6 4 (stut 4 0.75 0.25) $ sound "[~ ulh]*4" ]
+|=| cut "2" |=| gain "1") $
+sound "~ b18b*2" |=| gain "1.05" |=| shape "0.1" |=| cut "2",
+every 4 (|=| speed "2 0.5") $ whenmod 5 3 (density 2) $ whenmod 6 4 (stut 4 0.75 0.25) $ sound "[~ ulh]*4" ]

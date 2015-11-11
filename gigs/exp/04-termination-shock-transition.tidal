@@ -1,6 +1,6 @@
 cps 0.7
 
-t1 (anticipateIn 8) $
+t1 (xfadeIn 8) $
 
 d1 $ foldEvery [2,3,4] (density 1.1) $ whenmod 23 18 (degrade) $ whenmod 20 15 (|=| cutoff (scale 0.01 0.2 $ slow 1.25 sine1)) $
 whenmod 16 14 (iter 4) $ every 8 (|=| accelerate "-1 1 -2 2") $ whenmod 8 6 (trunc 0.25) $

@@ -1,13 +1,13 @@
 bps (200/120)
 
 -- intro
-t1 (anticipateIn 16) $ foldEvery [3,2] (7.25 <~) $ stack [
+t1 (xfadeIn 8) $ foldEvery [3,2] (7.25 <~) $ stack [
 weave' 3 (sound "~ vocad/2" |=| delay "0.3" |=| shape "0.1")
     [(|=| speed "0.5"), (0.25 <~), density 2, (|=| speed "-1"), (|=| accelerate "-1")],
-sound (samples "ringkit*8?" (slow 0.7 $ run 15)),
-whenmod 30 20 (degradeBy 0.7) $ rarely (|=| end "0.5") $ sound "~ ringpad" |=| end "0.05"
-|=| cut "56" |=| delay "0.5" |=| up "{0 0 -12}%4"
+sound (samples "ringkit*8?" (slow 0.7 $ run 15))
 ] |=| delaytime "0.45" |=| delayfeedback "0.5"
+
+hush
 
 {-
 rings,
