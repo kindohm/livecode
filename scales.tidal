@@ -37,12 +37,14 @@ let remPos num den = if x<0 then x+den else x where x = rem num den
 
 bps (100/120)
 
-brute $ whenmod 16 8 (const $ slow 4 $ note ((+60) <$> "[0 ~ ~ 2] [-2 ~ ~ 0] [-3 ~ ~ -2] [-4 ~ ~ -12]")) $
-note ((+57) <$> "{0 -5 3 ~ 0 2 ~ -2 0 -12 -5 ~}%8")
+brute $ slow 2 $ degrade $ foldEvery [2,3,4] (1.25 ~>) $ (|+| note "38") $ mel m13 16 "0*16"
 
 brute silence
 
-
+d1 $ stack [
+sound (samples "doru*16?" (run 20)) |+| cut "-1",
+slow 4 $ sound "k(3,8) ~ ~ ~" ]
+hush
 d1 $ slow 2 $ up (sc ionian <$> runUpAndDown) |+| sound "sq"
 
 d1 $ foldEvery [2,3,4] (5.25 <~) $ sound "la*8?"
