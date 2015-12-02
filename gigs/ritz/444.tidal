@@ -1,0 +1,18 @@
+bps (100/120)
+
+-- full
+d1 $ stack [
+sound (samples "{[n4/2 n4] n4*2 n4*4 [n4 n4/2] ~}%4" "{[0 5] [1 2] [2 0]*2 [1 4] ~}%4")
+|+| cut "-1" # speed "1",
+sound (samples "444" (slow 8 $ run 8)),
+sound (samples "{~ [~ ~ ~ 444z] ~ ~ ~}%4" (run 23)) # delay "0.5"
+|+| cutoff (scale 0.01 0.2 $ slow 3 sine1) |+| resonance "0.2" ] # delaytime "0.45" # delayfeedback "0.4"
+
+hush
+
+d1 $ sound (samples "{[n4/2 n4] n4*2 n4*4 [n4 n4/2] ~}%4" "{[0 5] [1 2] [2 0]*2 [1 4] ~}%4")
+|+| cut "-1" # speed "1"
+
+d2 $ sound (samples "444" (slow 8 $ run 8)) |+| cut "2"
+
+d3 $ sound (samples "{~ [~ ~ ~ 444z] ~ ~ ~}%4" (run 23)) |+| cut "3"
