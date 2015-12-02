@@ -1,0 +1,25 @@
+bps (100/120)
+
+-- 1m bank 2 preset 3
+m $ (|+| note "45") $ (|+| note "[0 0 0 [-24 0]]") $
+mel m13 5 "[0 0 [~ 0] [0/2 0]]"
+
+-- added some uppers...
+brute $ stut' 2 (0.125/2) (|+| note "[12 -12 -24]*5") $ (|+| note "84") $
+note "{~ ~ 0 [~ -1] [~ -5] ~ ~ -5 [-8 -5] ~}%4"
+
+d1 $ rarely (stut' 4 (0.125/4) (|*| gain "0.8")) $
+every 3 (stut' 1 (0.125/4*3) (|+| note "1")) $ foldEvery [3,4] (1.25 <~) $ every 5 (const $ note "~") $
+sound (samples "{n1*2 [~ n1] n1*4 ~ [n1 n1*2] [~ n1] n1 ~}%4" "{[0 2] 2 [1 3 4 5] ~ [5 3] 0 1 ~}%4")
+
+
+-- if necessary...
+d2 $ stack [
+sound (samples "443b" (slow 4 $ run 4)) |+| gain "1.2",
+sound (samples "[~ 443] 443 443 [~ 443]" (density 1.41 $ run 21))]
+
+d3 $ density 2 $ sound (samples "{~ ~ 443z [~ 443z] [~ 443z] ~ ~ 443z [443z 443z] ~}%4" (irand 39))
+
+brute silence
+m silence
+hush
