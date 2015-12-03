@@ -1,0 +1,10 @@
+bps (180/120)
+
+d1 $
+stack [
+degradeBy 0.6 $ sound (samples "b18b*8" "[0 1]/8") |+| cut "1",
+whenmod 5 3 (ghost) $ sound "kit1/2 teks [~ teks] ~"]
+
+hush
+
+-- slowcat kit6 - kit9

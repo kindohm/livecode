@@ -1,0 +1,15 @@
+bps (150/120)
+
+d1 $ foldEvery [3,4] (0.25 <~) $
+stack [
+(whenmod 7 5 (const $ slowspread (striate) [64, 128, 512, 300] $
+		(|=| delay "0.2") $ sound "~ bor") $ whenmod 12 8 (|=| up "-2") $ sound "~ bor" |+| cut "10" |=| up "0")
+	|=| gain "0.9",
+slow 2 $ sound "vocad"
+	|=| up "-12"
+	|=| gain "0.95"
+	|=| cut "2"
+	|=| delay "0.2" ]
+|=| delaytime "0.7" |=| delayfeedback "0.4"
+
+hush

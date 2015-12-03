@@ -1,0 +1,15 @@
+bps (200/120)
+
+let pat = "{0 0*2 [~ 0] [~ 0] ~ [1 -1]/2 ~ 0*2 ~}%4"
+
+d1 $
+stack [
+up pat |=| sound "k" |+| cut "-1",
+up pat |=| sound "nov1:6" |+| cut "-1"]
+
+-- nyanx0/nyanx1
+-- b3
+-- nov1:6,11,12,13
+-- b:*
+
+hush

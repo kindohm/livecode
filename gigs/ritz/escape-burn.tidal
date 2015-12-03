@@ -1,0 +1,12 @@
+bps (155/120)
+
+d1 $ sound "ch:5*4" |=| gain "0.8"
+
+d1 $ stack [
+sometimes (slow 2) $ (|=| coarse "{8 16 24}%4") $ sound "electrowave*8"
+|=| begin (scale 0 0.7 $ rand) |=| cut "1"
+|=| speed "0.9",
+sound "fk:22*8?" |=| gain "1",
+sound "ch:5*4" |=| gain "0.8",
+sound (samples "[fk*8 ~]/2 sdeep:0" (run 30))
+]
