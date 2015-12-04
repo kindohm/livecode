@@ -86,10 +86,10 @@ bps (100/120)
 
 d1 $ stack [
 sound (samples "{[n4/2 n4] n4*2 n4*4 [n4 n4/2] ~}%4" "{[0 5] [1 2] [2 0]*2 [1 4] ~}%4")
-|+| cut "-1" # speed "1",
+|+| cut "-1" # speed "1" |+| gain "0",
 sound (samples "444" (slow 8 $ run 8)),
 sound (samples "{~ [~ ~ ~ 444z] ~ ~ ~}%4" (run 23)) # delay "0.5"
-|+| cutoff (scale 0.01 0.2 $ slow 3 sine1) |+| resonance "0.2" ]
+|+| cutoff (scale 0.01 0.2 $ slow 3 sine1) |+| resonance "0.2" |+| gain "0" ]
 |=| delaytime "0.45" |=| delayfeedback "0.4"
 
 
@@ -118,8 +118,8 @@ mel m13 5 "[0 0 [~ 0] [0/2 0]]"
 brute $ stut' 2 (0.125/2) (|+| note "[12 -12 -24]*5") $ (|+| note "84") $
 note "{~ ~ 0 [~ -1] [~ -5] ~ ~ -5 [-8 -5] ~}%4"
 
-d1 $ rarely (stut' 4 (0.125/4) (|*| gain "0.8")) $
-every 3 (stut' 1 (0.125/4*3) (|+| note "1")) $ foldEvery [3,4] (1.25 <~) $ every 5 (const $ note "~") $
+d1 $ rarely (stut' 4 (0.125/4) (|*| gain "0.9")) $
+every 3 (stut' 1 (0.125/4*3) (|*| gain "0.95")) $ foldEvery [3,4] (1.25 <~) $ every 6 (gtfo) $
 sound (samples "{n1*2 [~ n1] n1*4 ~ [n1 n1*2] [~ n1] n1 ~}%4" "{[0 2] 2 [1 3 4 5] ~ [5 3] 0 1 ~}%4")
 
 
@@ -134,7 +134,61 @@ d3 $ density 2 $ sound (samples "{~ ~ 443z [~ 443z] [~ 443z] ~ ~ 443z [443z 443z
 
 
 
--- intermission
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- KINDOHM
+-- If you like what you see and hear, stay in touch and stay updated:
+-- kindohm.com | @kindohm | facebook.com/kindohm | snapchat: kindohm
+-- next gig January 7th 9pm @ The Nicollet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -151,6 +205,7 @@ note (preplace(1,3) "{1 [~ 1] ~ 1*1 ~ ~ ~ 1*2 ~}%8" ((+56) <$> (foldEvery [2,3] 
 m $ slow 18 $
 note ((+56) <$> (foldEvery [2,3] ((+12) <$>)) "[{0 -5 -3 -8 -2}%4, {0 5 7 -2 9 11 14}%4, {4 0 12 11 9 5}%4]") |+| dur "4"
 
+-- kit10
 d1 $
 stack [
 sound "[vixcy/4, vixbt/4]" |+| shape "0.3",
@@ -161,13 +216,13 @@ sound "vixch*8" |+| gain "0.8" |+| speed "[1 2 0.5 0.25]/4" ]
 -- 5 (defrag)
 bps (210/120)
 
--- support #1
+-- a
 d1 $ stack [
-slow 8 $ sound (samples "defb*4" "[0 1 2 2]") |+| speed "[1 1 1 [1 0.5]/2]*2",
+slow 8 $ sound (samples "defb*4" "[0 1 2 2]") |=| speed "1 1 1 [1 0.5]/2",
 slow 16 $ sound "gnarl gnarl:1",
 slow 2 $ sound "~ ~ defdo defdo:1" ]
 
--- support #2
+-- b
 d1 $ stack [
 slow 8 $ sound (samples "defb*4" "[3 4 5 5 3 6 5 5]/2"),
 slow 16 $ sound "gnarl:2 gnarl:3",
@@ -185,14 +240,10 @@ bps (150/120)
 
 d1 $ foldEvery [3,4] (0.25 <~) $
 stack [
-(whenmod 7 5 (const $ slowspread (striate) [64, 128, 512, 300] $
-		(|=| delay "0.2") $ sound "~ bor") $ whenmod 12 8 (|=| up "-2") $ sound "~ bor" |+| cut "10" |=| up "0")
-	|=| gain "0.9",
-slow 2 $ sound "vocad"
-	|=| up "-12"
-	|=| gain "0.95"
-	|=| cut "2"
-	|=| delay "0.2" ]
+(whenmod 7 5 (const $ slowspread (striate) [64, 128, 512, 300] $ (|=| delay "0.2") $ sound "~ bor") $
+whenmod 12 8 (|=| up "-2") $ sound "~ bor" |=| cut "10" |=| up "0")
+|=| gain "0.9",
+slow 2 $ sound "vocad" |=| up "-12" |=| gain "0.95" |=| cut "2" |=| delay "0.2" ]
 |=| delaytime "0.7" |=| delayfeedback "0.4"
 
 
@@ -207,16 +258,8 @@ stack [
 up pat |=| sound "k" |+| cut "-1",
 up pat |=| sound "nov1:6" |+| cut "-1"]
 
+
 -- nyanx0/nyanx1
 -- b3
 -- nov1:6,11,12,13
 -- b:*
-
-
-
-
-
-
-
-
-hush
