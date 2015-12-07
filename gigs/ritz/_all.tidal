@@ -84,7 +84,18 @@ let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
 -- 1 (444)
 bps (100/120)
 
-d1 $ stack [
+d1 $ foldEvery [3,4] (0.25 <~) $
+every 4 (chop 4) $
+every 5 (gap 4) $
+every 6 (|+| coarse "32 16 24") $
+every 7 (rip 0.2 0.1) $
+every 8 (spike') $
+whenmod 5 3 (jux (iter 4)) $
+whenmod 10 8 (|*| speed "0.9") $
+stack [
+sound "[~ sub/3] ~ ~ ~",
+jux (iter 8) $ sound (samples "{ch*4 ~ ~}%4" "0"),
+rarely (stut' 4 (0.125/2) (|*| gain "0.9")) $
 sound (samples "{[n4/2 n4] n4*2 n4*4 [n4 n4/2] ~}%4" "{[0 5] [1 2] [2 0]*2 [1 4] ~}%4")
 |+| cut "-1" # speed "1" |+| gain "0",
 sound (samples "444" (slow 8 $ run 8)),
@@ -98,14 +109,28 @@ sound (samples "{~ [~ ~ ~ 444z] ~ ~ ~}%4" (run 23)) # delay "0.5"
 
 
 
+
+
+
+
+
 -- 2 (slip)
 bps (180/120)
 
-d1 $
+d1 $ every 5 (spike') 4
+every 6 ((|+| coarse "16 32 24")) $
+every 7 (gap 4) $
+every 4 (chop 4) $
 stack [
+sound "llama*8?" |+| end "0.02",
+slowcat [sound (samples "kit6*8" (irand 30)),
+sound (samples "kit7*8" (irand 30)),
+sound (samples "kit7*9" (irand 30)),
+sound (samples "kit8*8" (irand 30)) ],
 degradeBy 0.6 $ sound (samples "b18b*8" "[0 1]/8") |+| cut "1",
 whenmod 5 3 (ghost) $ sound "kit1/2 teks [~ teks] ~"]
 
+hush
 
 
 -- 3 (443)
@@ -115,12 +140,25 @@ bps (100/120)
 m $ (|+| note "45") $ (|+| note "[0 0 0 [-24 0]]") $
 mel m13 5 "[0 0 [~ 0] [0/2 0]]"
 
-brute $ stut' 2 (0.125/2) (|+| note "[12 -12 -24]*5") $ (|+| note "84") $
+brute $ whenmod 8 4 (|+| note "-2") $ stut' 2 (0.125/2) (|+| note "[12 -12 -24]*5") $ (|+| note "84") $
 note "{~ ~ 0 [~ -1] [~ -5] ~ ~ -5 [-8 -5] ~}%4"
 
-d1 $ rarely (stut' 4 (0.125/4) (|*| gain "0.9")) $
+d1 $ foldEvery [3,4] (0.25 <~) $
+jux (iter 4) $
+every 6 (smash 3 [2,1,3]) 4
+every 5 (|=| speed "0.8 1.25") $
+rarely (stut' 4 (0.125/4) (|*| gain "0.9")) $
 every 3 (stut' 1 (0.125/4*3) (|*| gain "0.95")) $ foldEvery [3,4] (1.25 <~) $ every 6 (gtfo) $
 sound (samples "{n1*2 [~ n1] n1*4 ~ [n1 n1*2] [~ n1] n1 ~}%4" "{[0 2] 2 [1 3 4 5] ~ [5 3] 0 1 ~}%4")
+
+d2 $ sound "~ ~ ~ cpr/3" |+| coarse "{16 32 64}%4" |+| speed "0.8"
+
+
+hush
+
+m silence
+brute silence
+
 
 
 -- if necessary...
@@ -165,7 +203,30 @@ d3 $ density 2 $ sound (samples "{~ ~ 443z [~ 443z] [~ 443z] ~ ~ 443z [443z 443z
 -- kindohm.com | @kindohm | facebook.com/kindohm | snapchat: kindohm
 -- next gig January 7th 9pm @ The Nicollet
 
+bps (105/100)
 
+d1 $ spike' $
+smash 3 [3,2,1] $
+every 5 (|+| coarse "8 16 24") $
+whenmod 7 4 (jux (iter 4)) $
+every 6 (gap 4) $
+every 8 (chop 4) $
+every 9 (rip 0.2 0.1) $
+foldEvery [3,4] (0.25 <~) $ stack [
+sound "[~ sub/2] ~ ~ ~",
+sound "ch*8",
+(0.25 <~) $ density 2 $ sound "k:8(3,8)",
+density 2 $ sound "sna(3,8)"] |+| shape "0.2"
+
+hush
+
+
+-- hey everybody thanks for listening!!!!
+-- Jan 7 @ The Nicollet @ 9pm
+-- kindohm.com | @kindohm
+
+
+hush
 
 
 
@@ -208,10 +269,14 @@ note ((+56) <$> (foldEvery [2,3] ((+12) <$>)) "[{0 -5 -3 -8 -2}%4, {0 5 7 -2 9 1
 -- kit10
 d1 $
 stack [
+stut' 4 (0.125) (|*| speed "1.2") $ jux (iter 8) $ sound "~ cp",
 sound "[vixcy/4, vixbt/4]" |+| shape "0.3",
+sound "~ ~ ~ sea/4",
 foldEvery [2,3,4] (density (4/3)) $ jux (iter 16) $
 sound "vixch*8" |+| gain "0.8" |+| speed "[1 2 0.5 0.25]/4" ]
-
+hush
+m silence
+brute silence
 
 -- 5 (defrag)
 bps (210/120)
@@ -228,23 +293,51 @@ slow 8 $ sound (samples "defb*4" "[3 4 5 5 3 6 5 5]/2"),
 slow 16 $ sound "gnarl:2 gnarl:3",
 slow 2 $ sound "~ ~ defdo defdo:1" ]
 
-d2 $
+d2 $ whenmod 11 8 (iter 4) $
+degrade $ every 5 (gap 4) $
+every 6 (chop 4) $
+every 7 (rip' 0 1 8 0.2 0.1) $
+every 8 (spike') $
+whenmod 7 5 (|+| speed "1.5") $
+whenmod 6 4 (jux (iter 4)) $
 stack [slow 2 $ sound "kl:1(3,8) defs" |+| gain "0.9 1",
+ghost $ sound "~ cp [~ cp] ~",
+slowcat [sound (samples "akuma1*8" (irand 30)) |+| unit "c" |+| speed "8",
+sound (samples "teeny1*8" (irand 30)) |+| unit "c" |+| speed "8",
+sound (samples "akuma2*8" (irand 30)) |+| unit "c" |+| speed "8"],
 rarely (degrade . (density 2)) $ slow 2 $ slowcat [
 sound (samples "defkit1*16" (irand 20)) |+| end "0.25" |+| speed "{1 2 1.5}%16",
 sound (samples "defkit2*16" (irand 20)) |+| end "0.25" |+| speed "{1 2 1.5}%16"]]
 
+d2 silence
+d1 silence
+
+hush
 
 --6 (melts)
 bps (150/120)
 
-d1 $ foldEvery [3,4] (0.25 <~) $
+d1 $ whenmod 7 4 (|+| accelerate (scale 0 1 $ rand)) $
+foldEvery [3,4] (0.25 <~) $
+whenmod 7 5 (jux (iter 4)) $
+every 5 (|+| coarse "16 24 32") $
 stack [
+sound "{run ~ ~}%8" |+| gain "0.8",
+sound "{8ch*8 ~ ~}%2" |+| gain "0.9",
+sound "~ ride" |+| gain "0.9" |+| speed "[1 -1]/3" |+| delay "0.5",
+stut 4 0.25 0.25 $ sound "k*4? stite",
+slow 4 $ sound (samples "fk*16 ~" (run 30)),
+stut' 3 (0.125/2) (|*| gain "0.9") $
+sound "~ teks [~ teks] ~",
+whenmod 8 4 (const $ sound (samples "peri*16?" (irand 40)) |+| speed "2" |+| end "0.2") $
+sound (samples "keys2*8?" (irand 30)) |+| delay "0.4",
 (whenmod 7 5 (const $ slowspread (striate) [64, 128, 512, 300] $ (|=| delay "0.2") $ sound "~ bor") $
 whenmod 12 8 (|=| up "-2") $ sound "~ bor" |=| cut "10" |=| up "0")
 |=| gain "0.9",
 slow 2 $ sound "vocad" |=| up "-12" |=| gain "0.95" |=| cut "2" |=| delay "0.2" ]
-|=| delaytime "0.7" |=| delayfeedback "0.4"
+|=| delaytime "0.7" |=| delayfeedback "0.4" |+| shape "0.2"
+
+hush
 
 
 
@@ -253,13 +346,31 @@ bps (200/120)
 
 let pat = "{0 0*2 [~ 0] [~ 0] ~ [1 -1]/2 ~ 0*2 ~}%4"
 
-d1 $
+d1 $ every 12 (const $ sound "loon") $
+foldEvery [3,4] (0.25 <~) $
+every 5 (rip 0.2 0.1) $
+every 6 (chop 4) $
+whenmod 10 8 (spike') $
 stack [
+sound "loon*8?" |+| cut "3" |+| end "0.1",
 up pat |=| sound "k" |+| cut "-1",
-up pat |=| sound "nov1:6" |+| cut "-1"]
+foldEvery [2,3,4] (density 2) $ sound "8ch*4",
+slow 2 $ sound (samples "fk*8 ~" (run 30)) |+| shape "0.3",
+sound "{~ s ~ ~ ~}%4",
+stut 4 0.25 0.25 $ sound "~ cp",
+slowcat [
+sound (samples "brk2*8?" (irand 30)) |+| speed "8" |+| unit "c" |+| shape "0.3",
+sound (samples "brk3*8?" (irand 30)) |+| speed "8" |+| unit "c" |+| shape "0.3",
+sound (samples "brk1*8?" (irand 30)) |+| speed "8" |+| unit "c" |+| shape "0.3"],
+ghost $ sound "~ teks [~ teks] ~",
+whenmod 8 4 (|=| speed "0.9") $
+up pat |=| sound "[nov1:11 nyanx2 b:7 nyanx1]/7" |+| cut "-1"]
 
-
+hush
 -- nyanx0/nyanx1
 -- b3
 -- nov1:6,11,12,13
 -- b:*
+
+brute silence
+m silence
