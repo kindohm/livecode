@@ -1,0 +1,128 @@
+-- rytm bd hard machine glitching
+bd $ slow 16 $ (|+| note "0") $ note "0*16"
+|+| synth1 "1"
+|+| synth2 (scale 0.4 0.5 $ slow 1.1 tri1) -- tune
+|+| synth3 (scale 0.1 0.5 $ slow 1.31 tri1) -- decay
+|+| synth4 (scale 0 0.5 $ rand) -- hold
+|+| synth5 (scale 0.1 0.8 $ slow 1.444 tri1) --swp time
+|+| synth6 (scale 0 0.8 $ slow 1.555 tri1) -- snap
+|+| synth7 "[0 0.01 0.02]/1" -- wav but causes clicks when changing
+|+| synth8 "0"-- tic
+
+-- rytm bd classic machine glitching
+bd $ slow 12 $ (|+| note "0") $ note "0*16"
+|+| synth1 "1"
+|+| synth2 "0.5" --(scale 0.4 0.6 $ density 1.1 tri1) -- tune
+|+| synth3 (scale 0.05 0.6 $ slow 1.31 tri1) -- decay
+|+| synth4 (scale 0 1 $ rand) -- hold
+|+| synth5 (scale 0.2 0.6 $ slow 1.444 tri1) --swp time
+|+| synth6 (scale 0.2 0.6 $ slow 1.255 tri1) -- swp depth
+|+| synth7 "[0 0.01 0.02]/1" -- wav but causes clicks when changing
+|+| synth8 "0" -- transient
+
+-- rytm bd FM machine glitching
+k1 $ slow 1.5 $ (|+| note "0") $ note "0*16?"
+|+| synth1 "1"
+|+| synth2 (scale 0.2 0.6 $ slow 1.1 sine1) -- tune
+|+| synth3 (scale 0.1 0.6 $ slow 1.31 sine1) -- decay
+|+| synth4 (scale 0 1 $ density 1.231 sine1) -- FM Amount
+|+| synth5 (scale 0.1 0.8 $ slow 1.444 sine1) --swp time
+|+| synth6 (scale 0 1 $ density 1.155 sine1) -- FM swp time
+|+| synth7 (scale 0 1 $ slow 1.5666 sine1) -- FM decay
+|+| synth8 (scale 0 1 $ rand) -- FM tune
+
+-- rytm sd classic machine glitching
+k2 $ slow 1.5 $ (|+| note "0") $ note "37*16?"
+|+| synth1 "1"
+|+| synth2 (scale 0.2 0.6 $ slow 1.1 sine1) -- tune
+|+| synth3 (scale 0.1 0.6 $ slow 1.31 sine1) -- decay
+|+| synth4 (scale 0 1 $ density 1.231 sine1) -- detune
+|+| synth5 (scale 0.1 0.8 $ slow 1.444 sine1) --snap
+|+| synth6 (scale 0 0.5 $ density 1.155 sine1) -- noise decay
+|+| synth7 (scale 0 1 $ slow 1.5666 sine1) -- noise level
+|+| synth8 (scale 0 1 $ rand) -- balance
+
+-- rytm sd hard machine glitching
+sd $ slow 8 $ (|+| note "0") $ note "37*16"
+|+| synth1 "1"
+
+|+| synth2 (scale 0.3 0.5 $ slow 1.1 sine1) -- tune
+|+| synth3 (scale 0.1 0.4 $ slow 1.31 sine1) -- decay
+|+| synth4 (scale 0.5 1 $ density 1.231 sine1) -- sweep depth
+|+| synth5 (scale 0 0.5 $ slow 1.444 sine1) --tic
+|+| synth6 (scale 0 0.3 $ density 1.155 sine1) -- noise decay
+|+| synth7 (scale 0.5 1 $ slow 1.5666 sine1) -- noise level
+|+| synth8 (scale 0 1 $ rand) -- sweep time
+
+-- rytm sd FM machine glitching
+k2 $ slow 1.5 $ (|+| note "0") $ note "37*16?"
+|+| synth1 "1"
+|+| synth2 (scale 0.2 0.6 $ slow 1.1 sine1) -- tune
+|+| synth3 (scale 0.1 0.6 $ slow 1.31 sine1) -- decay
+|+| synth4 (scale 0 1 $ density 1.231 sine1) -- FM Tune
+|+| synth5 (scale 0.1 0.8 $ slow 1.444 sine1) --FM Decay
+|+| synth6 (scale 0 0.5 $ density 1.155 sine1) -- noise decay
+|+| synth7 (scale 0 1 $ slow 1.5666 sine1) -- noise level
+|+| synth8 (scale 0 1 $ rand) -- FM amount
+
+
+-- rytm cp machine glitching
+cp $ slow 8 $ (|+| note "0") $ note "37*16"
+|+| synth1 "1"
+|+| synth2 (scale 0.5 1 $ slow 1.1 sine1) -- tone
+|+| synth3 (scale 0.3 0.5 $ slow 1.31 sine1) -- noise decay
+|+| synth4 (scale 0 0.04 $ density 1.231 sine1) -- num claps
+|+| synth5 (scale 0.55 0.65 $ slow 1.444 sine1) -- rate
+|+| synth6 (scale 0.6 1 $ density 1.155 sine1) -- noise level
+|+| synth8 (scale 0.8 1 $ rand) -- clap decay
+|+| synth7 (scale 0 0.03 $ slow 1.5666 sine1) -- rnd claps
+
+cp silence
+
+-- rytm tom machine glitching
+k6 $ slow 1.5 $ (|+| note "0") $ note "37*16?"
+|+| synth1 "1"
+|+| synth2 (scale 0.3 1 $ slow 1.13111 sine1) -- tune
+|+| synth3 "0" --(scale 0.1 0.6 $ slow 1.3131 sine1) -- decay
+|+| synth4 (scale 0 1 $ density 1.231 sine1) -- sweep depth
+|+| synth5 (scale 0 1 $ slow 1.444 sine1) -- sweep time
+|+| synth6 "0" --(scale 0 0.5 $ density 1.155 sine1) -- noise decay
+|+| synth7 (scale 0 1 $ slow 1.5666 sine1) -- noise level
+|+| synth8 (scale 0 1 $ rand) -- noise tone
+
+-- rytm ch
+ch $ slow 1.5 $ (|+| note "0") $ note "37*16?"
+|+| synth1 "1"
+|+| synth2 (scale 0 1 $ rand) -- tune
+|+| synth3 (scale 0 0.3 $ slow 1.3131 tri1) -- decay
+|+| synth4 (scale 0 1 $ density 1.231 tri1) -- color
+ch silence
+-- rytm oh
+
+oh $ slow 18 $ (|+| note "0") $ note "37*16"
+|+| synth1 "1"
+|+| synth2 (scale 0 0.5 $ rand) -- tune
+|+| synth3 "0.4" --(scale 0.3 0.9 $ slow 1.3131 sine1) -- decay
+|+| synth4 (scale 0 0.8 $ density 1.231 tri1) -- color
+oh silence
+
+-- rytm cy
+cy $ slow 40 $ (|+| note "0") $ note "37*16"
+|+| synth1 "1"
+|+| synth2 "0.5" --(scale 0 1 $ rand) -- tune
+|+| synth3 "0.8" --(scale 0.4 0.9 $ slow 1.3131 tri1) -- decay
+|+| synth4 (scale 0 1 $ density 1.231 tri1) -- color
+|+| synth5 (scale 0 0.5 $ density 1.231 tri1) -- tone
+
+-- rytm cb
+k12 $ slow 1.5 $ (|+| note "0") $ note "37*16?"
+|+| synth1 "1"
+|+| synth2 (scale 0 1 $ density 1.13111 sine1) -- tune
+|+| synth3 (scale 0 0.9 $ slow 1.1131 sine1) -- decay
+|+| synth4 (scale 0 1 $ density 1.231 sine1) -- detune
+
+
+k2 silence
+bd silence
+sd silence
+cy silence

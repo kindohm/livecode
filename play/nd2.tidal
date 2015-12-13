@@ -1,0 +1,46 @@
+-- might be missing a few params
+
+bd $ slow 14 $ (|+| note "60") $ note "0*16"
+|+| npitch (scale 0 0.8 $ density 1.3131 sine1)
+|+| nbend (scale 0 1 $ slow 1.223 sine1)
+|+| nbendtime (scale 0 1 $ slow 1.071 sine1)
+|+| ndecay (scale 0.5 0.6 $ slow 1.373 sine1)
+|+| nclick "0" --(scale 0 0.2 $ slow 1.41 sine1)
+|+| nclicktype (scale 0 1 $ slow 1.17 sine1)
+|+| ntimbre (scale 0 1 $ slow 1.131 sine1)
+|+| ntimbredecay (scale 0 1 $ slow 1.61 sine1)
+|+| nmix (scale 0.5 1 $ slow 1.4444 sine1)
+|+| nnoisefreq (scale 0 1 $ slow 1.33333 sine1)
+|+| nnoisetype (scale 0 1 $ slow 1.2222 sine1)
+|+| nnoiseatk (scale 0 0.5 $ density 1.1888 sine1)
+|+| nnoiseenv (scale 0 0.5 $ slow 1.77161 sine1)
+|+| nnoisedecay (scale 0 0.4 $ density 1.2171771 sine1)
+|+| nnoiseres (scale 0 0.2 $ density 1.177 sine1)
+|+| ndistamount "0" --(scale 0 0.5 $ density 1.22222 sine1)
+|+| ndisttype (scale 0 1 $ density 1.4141 sine1)
+|+| neqfreq (scale 0.5 1 $ slow 1.6161616 sine1)
+|+| neqgain (scale 0 0.3 $ slow 1.111 sine1)
+
+bd $ slow 3 $ (|+| note "60") $ note "0*16"
+|+| npitch (scale 0.3 0.6 $ rand)
+|+| nbend (scale 0.55 0.6 $ rand)
+|+| nbendtime (scale 0.05 0.4 $ rand)
+|+| ndecay (scale 0.05 0.4 $ rand)
+|+| nclick "0" --(scale 0 0.2 $ slow 1.41 sine1)
+|+| nclicktype (scale 0 1 $ rand)
+|+| ntimbre rand
+|+| ntimbredecay rand
+|+| nmix (scale 0.3 0.7 $ rand)
+|+| nnoisefreq (scale 0.05 0.5 $ rand)
+|+| nnoisetype rand
+|+| nnoiseatk "0"
+|+| nnoiseenv (scale 0.5 0.6 $ rand)
+|+| nnoisedecay (scale 0.05 0.4 $ density 1.1 saw1)
+|+| nnoiseres (scale 0 0.1 $ rand)
+|+| ndistamount "0" --(scale 0 0.5 $ density 1.22222 sine1)
+|+| ndisttype (scale 0 1 $ rand)
+|+| neqfreq (scale 0.5 0.6 $ rand)
+|+| neqgain (scale 0 0.1 $ rand)
+
+k1 silence
+bd silence

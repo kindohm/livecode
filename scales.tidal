@@ -26,6 +26,8 @@ let remPos num den = if x<0 then x+den else x where x = rem num den
     m11 = [0,3,7,10,14,17]
     thirteen = [0,4,7,10,14,21]
     m13 = [0,3,7,10,14,21]
+    mpent = [0, 3, 5, 7, 10, 12]
+    pent = [0, 2, 4, 7, 9, 12]
     runUpOneOctave = run $ length ionian
     runUpTwoOctaves = run $ 2 * length ionian
     runUpThreeOctaves = run $ 3 * length ionian

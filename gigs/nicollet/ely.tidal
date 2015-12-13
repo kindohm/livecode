@@ -1,0 +1,140 @@
+bps (160/120)
+
+-- ely
+
+brute $ (|+| note "31") $
+slow 4 $ slowcat [
+note "[0 2]" |+| dur "2.9",
+note "[0 2]" |+| dur "2.9",
+note "[-2 0]" |+| dur "2.9",
+note "-5" |+| dur "5.8",
+note "[0 2]" |+| dur "2.9",
+note "[0 2]" |+| dur "2.9",
+note "[-2 0]" |+| dur "2.9",
+note "-5" |+| dur "5.8",
+note "[5 2]" |+| dur "2.9",
+note "-5" |+| dur "5.8",
+note "[5 2]" |+| dur "2.9",
+note "-5" |+| dur "5.8"]
+
+m $ (|+| note "55") $ slow 4 $ slowcat [
+note "[0 2] 7 ~ ~ 5 ~ 4 ~ [4 5] 2 ~ ~ 4 ~ 2 ~",
+note "[0 2] 7 ~ ~ 5 ~ 4 ~ [4 5] 2 ~ ~ 4 ~ 2 ~",
+note "[-2 0] 5 ~ ~ 2 ~ 7 ~ [2 4] 0 ~ ~ 4 ~ 0 ~",
+note "[-5 -3] 2 ~ [-5 -3] [2 -3] [0 7] ~ ~ [-5 -3] 2 ~ ~ ~ ~ ~ ~",
+note "[0 2] 7 ~ ~ 5 ~ 4 ~ [4 5] 2 ~ ~ 4 ~ 2 ~",
+note "[0 2] 7 ~ ~ 5 ~ 4 ~ [4 5] 2 ~ ~ 4 ~ 2 ~",
+note "[-2 0] 5 ~ ~ 2 ~ 7 ~ [2 4] 0 ~ ~ 4 ~ 0 ~",
+note "[-5 -3] 2 ~ [-5 -3] [2 -3] [0 7] ~ ~ [-5 -3] 2 ~ ~ ~ ~ ~ ~",
+note "[0 2] 7 ~ [0 2] 7 [9 12] ~ ~ [0 2] 7 ~ ~ ~ 9 7 5",
+note "2 ~ ~ [10,7] ~ ~ [9,5] ~ ~ ~ ~ ~ -2 ~ -5 ~",
+note "[0 2] 7 ~ [0 2] 7 [9 12] ~ ~ [0 2] 7 ~ ~ ~ 9 7 5",
+note "[-5 -3] 2 ~ [-5 -3] [2 -3] [0 7] ~ ~ [-5 -3] 2 ~ ~ ~ ~ ~ ~"]
+
+
+keys $ (|+| note "79") $ slow 4 $
+slowcat [note "[0 -5] ~ ~ ~ [-3 2] ~ ~ ~",
+note "[0 -5] ~ ~ ~ [-3 2] ~ ~ ~",
+note "[-2 -7] ~ ~ ~ [-5 0] ~ ~ ~",
+note "[-5 -10] ~ ~ ~ -5 ~ [~ 2] ~",
+note "[0 -5] ~ ~ ~ [-3 2] ~ ~ ~",
+note "[0 -5] ~ ~ ~ [-3 2] ~ ~ ~",
+note "[-2 -7] ~ ~ ~ [-5 0] ~ ~ ~",
+note "[-5 -10] ~ ~ ~ -5 ~ [~ 2] ~",
+note "[0] ~ ~ -3 2 ~ [~ 5] ~",
+note "[-5 -10] ~ ~ ~ ~ ~ ~ ~",
+note "[0] ~ ~ -3 2 ~ [~ 5] ~",
+note "[-5 -10] ~ ~ ~ -5 ~ [~ 2] ~"] |+| dur "0.17"
+
+keys silence
+m silence
+brute silence
+-- ok all samples now....
+
+-- bass
+d1 $ slow 2 $ slowcat [
+sound "[elyb:3]",
+sound "elyb:0",
+sound "[elyb:3]",
+sound "elyb:0",
+sound "elyb:2",
+sound "elyb:3",
+sound "elyb:1",
+sound "~",
+sound "[elyb:3]",
+sound "elyb:0",
+sound "[elyb:3]",
+sound "elyb:0",
+sound "elyb:2",
+sound "elyb:3",
+sound "elyb:1",
+sound "~",
+sound "elyb:4",
+sound "elyb",
+sound "elyb:1",
+sound "~",
+sound "elyb:4",
+sound "elyb",
+sound "elyb:1",
+sound "~"] |+| shape "0" |+| delaytime "0.56" |+| delayfeedback "0.4"
+
+hush
+
+-- keys
+d2 $ slow 2 $ slowcat [
+sound "[elykr:6 elykr:3 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:4 elykr:1 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:6 elykr:3 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:4 elykr:1 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:5 elykr:2 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:3 elykr:6 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:3 elykr:0 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:3 ~ ~ ~ ~ elykr:1 ~ ~]",
+sound "[elykr:6 elykr:3 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:4 elykr:1 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:6 elykr:3 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:4 elykr:1 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:5 elykr:2 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:3 elykr:6 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:3 elykr:0 ~ ~ ~ ~ ~ ~]",
+sound "[elykr:3 ~ ~ ~ ~ elykr:1 ~ ~]",
+sound "[elykr:6 ~ ~ ~ ~ ~ elykr:4 ~]",
+sound "[elykr:1 ~ ~ ~ ~ elykr:7 ~ ~]",
+sound "[elykr:3 ~ ~ ~ ~ ~ ~ ~]",
+sound "[~ ~ ~ ~ ~ ~ ~ ~]",
+sound "[elykr:6 ~ ~ ~ ~ ~ elykr:4 ~]",
+sound "[elykr:1 ~ ~ ~ ~ elykr:7 ~ ~]",
+sound "[elykr:3 ~ ~ ~ ~ ~ ~ ~]",
+sound "[elykr:3 ~ ~ ~ ~ elykr:1 ~ ~]"] |+| delay "0.5" |+| delaytime "0.56" |+| delayfeedback "0.4"
+
+hush
+-- pad
+
+d3 $ slow 2 $ slowcat [
+sound "[elyp:5 elyp:0 elyp:7 ~] ~ elyp:6 elyp:1",
+sound "[elyp:1 elyp:6 elyp:0 ~] ~ elyp:1 elyp:0",
+sound "[elyp:5 elyp:0 elyp:7 ~] ~ elyp:6 elyp:1",
+sound "[elyp:1 elyp:6 elyp:0 ~] ~ elyp:1 elyp:0",
+sound "[elyp:4 elyp:5 elyp:6 ~] ~ elyp:0 elyp:7",
+sound "[elyp:0 elyp:1 elyp:5 ~] ~ elyp:1 elyp:5",
+sound "[elyp:2 elyp:3 elyp:0 ~] [~ ~ elyp:2 elyp:3] [elyp:0 elyp:3 elyp:5 elyp:7] ~",
+sound "[elyp:2 elyp:3 elyp:0 ~] ~ ~ ~",
+sound "[elyp:5 elyp:0 elyp:7 ~] ~ elyp:6 elyp:1",
+sound "[elyp:1 elyp:6 elyp:0 ~] ~ elyp:1 elyp:0",
+sound "[elyp:5 elyp:0 elyp:7 ~] ~ elyp:6 elyp:1",
+sound "[elyp:1 elyp:6 elyp:0 ~] ~ elyp:1 elyp:0",
+sound "[elyp:4 elyp:5 elyp:6 ~] ~ elyp:0 elyp:7",
+sound "[elyp:0 elyp:1 elyp:5 ~] ~ elyp:1 elyp:5",
+sound "[elyp:2 elyp:3 elyp:0 ~] [~ ~ elyp:2 elyp:3] [elyp:0 elyp:3 elyp:5 elyp:7] ~",
+sound "[elyp:2 elyp:3 elyp:0 ~] ~ ~ ~",
+sound "[elyp:5 elyp:0 elyp:7 ~] [~ ~ elyp:5 elyp:0] [elyp:7 ~ elyp:8 elyp:10] ~",
+sound "[elyp:5 elyp:0 elyp:7 ~] ~ [ ~ elyp:8] [elyp:7 elyp:6]",
+sound "elyp:0 [~ [elyp:9, elyp:7]] ~ [elyp:6, elyp:8]",
+sound "~ ~ elyp:4 elyp:2",
+sound "[elyp:5 elyp:0 elyp:7 ~] [~ ~ elyp:5 elyp:0] [elyp:7 ~ elyp:8 elyp:10] ~",
+sound "[elyp:5 elyp:0 elyp:7 ~] ~ [ ~ elyp:8] [elyp:7 elyp:6]",
+sound "[elyp:2 elyp:3 elyp:0 ~] [~ ~ elyp:2 elyp:3] [elyp:0 elyp:3 elyp:5 elyp:7] ~",
+sound "[elyp:2 elyp:3 elyp:0 ~] ~ ~ ~"] |+| delaytime "0.56" |+| delayfeedback "0.4"
+
+
+hush
