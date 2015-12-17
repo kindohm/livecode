@@ -9,6 +9,12 @@ let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
     gtfo p = (const $ sound "~") p
     gtfo_mate p = (const $ note "~") p
 
+    let pingpongBy' x fb tL tR cps f p = stack [ p,
+                                     (tL ~> (f p)) # pan (pure $ (1-x)/2) |*| ddd,
+                                     ((tL+tR) ~> (f p)) # pan (pure $ (x+1)/2) |*| ddd ]
+                  where ddd = delay "1" |*| delaytime (pure $ fromRational $ (tL+tR)/cps) |*| delayfeedback (pure fb) |*| gain (pure fb)
+
+
 let runnow d p = do now <- getNow
                     d $ (nextSam now) ~> p
 
