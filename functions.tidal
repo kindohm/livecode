@@ -8,6 +8,8 @@ let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
     jit start amount p = within (start, (start + 0.5)) (trunc (amount)) p
     gtfo p = (const $ sound "~") p
     gtfo_mate p = (const $ note "~") p
+    shift p = (1024 <~)  p
+    shift' x p = (x <~) p
 
     let pingpongBy' x fb tL tR cps f p = stack [ p,
                                      (tL ~> (f p)) # pan (pure $ (1-x)/2) |*| ddd,
@@ -22,4 +24,5 @@ runnow d1 $ seqP [(0,4,sound "bm1(3,8)"),(2,6,sound "bm2(5,8)")]
 
 runnow d1 $ every 3 (|+| speed "2") $ sound "break1*4"
 
--- dont really use these any more
+--d1 $ pingpongBy' 1 0.8 (1/8) (2/8) ((|*| cutoff "0.05") . (|*| resonance "0.1"))
+-- $ (sound $ samples "peri:3" (irand 8))
