@@ -1,25 +1,28 @@
-m $ slow 2 $ (|+| note "[45 33 57]*4") $ note "0*16?"
-|+| dur (scale 0.05 0.15 $ slow 1.9666 sine1)
-|+| rlpcutoff (scale 0.3 0.9 $ density 1.01 sine1)
+|+| rlpcutoff "0.5" --(scale 0.5 0.9 $ density 1.01 sine1)
 |+| rhpcutoff (scale 0 0.4 $ density 1.132 sine1)
-|+| rfilteratk (scale 0 0.1 $ slow 1.2 sine1)
-|+| rfilterdecay (scale 0.05 0.5 $ density 1.5181 sine1)
-|+| rfiltersustain (scale 0.1 1 $ density 1.277777 sine1)
-|+| rfilterrelease (scale 0.05 0.3 $ slow 1.523 sine1)
-|+| rres (scale 0 0.7 $ density 1.313 sine1)
-|+| rfilterenv (scale 0.1 0.9 $ density 1.111 sine1)
-|+| rcrush "0" --(scale 0 0.5 $ slow 1.61 sine1)
-|+| rampatk (scale 0 0.1 $ slow 1.213 sine1)
-|+| rampdecay (scale 0.05 0.7 $ density 1.333 sine1)
-|+| rampsustain "1"
-|+| ramprelease (scale 0.05 0.3 $ slow 2.877 sine1)
+m silence
+
+m $ slow 16 $ (|+| note "[45 57 33]*5") $ mel mpent 5 "0*16" -- note "0*16"
+
+|+| dur (scale 0.05 0.08 $ slow 1.9666 sine1)
+|+| rfilteratk "0" --(scale 0 0.1 $ slow 1.2 sine1)
+|+| rfilterdecay (scale 0 0.05 $ density 1.5181 sine1)
+|+| rfiltersustain (scale 0 0.2 $ density 1.277777 sine1)
+|+| rfilterrelease (scale 0 0.05 $ slow 1.523 sine1)
+|+| rres (scale 0.2 1 $ density 1.313 sine1)
+|+| rfilterenv (scale 0.5 0.9 $ density 1.111 sine1)
+|+| rcrush "0" --(scale 0 0.1 $ slow 1.61 sine1)
+|+| rampatk "0" --(scale 0 0.1 $ slow 1.213 sine1)
+|+| rampdecay (scale 0 0.05 $ density 1.333 sine1)
+|+| rampsustain "0"
+|+| ramprelease (scale 0 0.08 $ slow 2.877 sine1)
 |+| rpitchenv (scale 0.2 0.8 $ density 1.987 sine1)
-|+| rport (scale 0 0.5 $ slow 1.77777 sine1)
+|+| rport "0" --(scale 0 0.5 $ slow 1.77777 sine1)
 |+| rpitchatk (scale 0 0.5 $ density 3.4111 sine1)
 |+| rpitchdecay (scale 0 0.5 $ density 1.2222 sine1)
 |+| rosc1 "1"
 |+| rosc2 (scale 0 1 $ slow 2.6665 sine1)
-|+| rosc2tune "0.5"
+|+| rosc2tune (scale 0 1 $ sine1)
 |+| rsub (scale 0 1 $ slow 1.919 sine1)
 |+| rnoise (scale 0 1 $ density 3.71771 sine1)
 |+| rnoisetype "[0 1]*3"
@@ -34,19 +37,22 @@ m $ slow 2 $ (|+| note "[45 33 57]*4") $ note "0*16?"
 |+| rosc2type (scale 0 1 $ slow 0.9999 sine1)
 |+| rosc2range (scale 0 1 $ slow 3.151 sine1)
 |+| rosc2color (scale 0 1 $ slow 5.131 sine1)
-|+| rosc2ring "[0 1]*9"
+|+| rosc2ring "[0 1]"
 |+| rosc2mod (scale 0 1 $ slow 3.141 sine1)
 |+| rosc2sync "[0 1]*7"
 |+| rlforate (scale 0 1 $ slow 2.17717 sine1)
 |+| rlfofilter (scale 0 1 $ slow 3.3333 sine1)
 |+| rlfoamp (scale 0 1 $ slow 1.21 sine1)
 |+| rlfotype rand
-|+| rlfokeytrig "0"
-|+| rdelay "0" -- (scale 0 1 $ sine1)
-|+| rdelaytime (scale 0 1 $ slow 3.888 sine1)
+|+| rlfokeytrig "[0 1]*3"
+|+| rdelay "0" --(scale 0 1 $ slow 3.7 sine1)
+|+| rdelaytime (scale 0 0.03 $ slow 3.888 sine1)
 |+| rreverb "0" --(scale 0 0.4 $ density 1.2331121 sine1)
 
 --A C D E G A
 m $ whenmod 16 8 ((|+| note "-4")) $ slow 4 $ rarely (|+| note "-12") $ (|+| note "45") $ mel mpent 12 "0*16?"
 
 m silence
+
+k7 $ (|+| note "55") $ mel m9 10 "0*9?"
+|+| modwheel (rand)
