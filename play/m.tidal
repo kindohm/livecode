@@ -1,53 +1,53 @@
-|+| rlpcutoff "0.5" --(scale 0.5 0.9 $ density 1.01 sine1)
-|+| rhpcutoff (scale 0 0.4 $ density 1.132 sine1)
+
 m silence
-
-m $ slow 16 $ (|+| note "[45 57 33]*5") $ mel mpent 5 "0*16" -- note "0*16"
-
-|+| dur (scale 0.05 0.08 $ slow 1.9666 sine1)
-|+| rfilteratk "0" --(scale 0 0.1 $ slow 1.2 sine1)
-|+| rfilterdecay (scale 0 0.05 $ density 1.5181 sine1)
-|+| rfiltersustain (scale 0 0.2 $ density 1.277777 sine1)
-|+| rfilterrelease (scale 0 0.05 $ slow 1.523 sine1)
-|+| rres (scale 0.2 1 $ density 1.313 sine1)
-|+| rfilterenv (scale 0.5 0.9 $ density 1.111 sine1)
+-- bass notes or something
+m $ slow 1.2 $ (|+| note "[33 21 45 57 69]*9") $ mel mpent 5 "0" -- note "0*16"
+|+| dur (scale 0.01 0.5 $ shift' 30 $ rand)
+|+| rfilteratk (scale 0 0.01 $ shift' 31 $ rand)
+|+| rfilterdecay (scale 0 0.5 $ shift' 32 $ rand)
+|+| rfiltersustain (scale 0 1 $ shift' 33 $ rand)
+|+| rfilterrelease (scale 0 0.5 $ shift' 34 $ rand)
+|+| rres (scale 0 0.7 $ shift' 35 $ rand)
+|+| rfilterenv (scale 0.4 0.6 $ shift' 36 $ rand)
+|+| rlpcutoff (scale 0.4 1 $ shift' 2 $ rand)
+|+| rhpcutoff (scale 0 0.5 $ shift' 3 $ rand)
 |+| rcrush "0" --(scale 0 0.1 $ slow 1.61 sine1)
-|+| rampatk "0" --(scale 0 0.1 $ slow 1.213 sine1)
-|+| rampdecay (scale 0 0.05 $ density 1.333 sine1)
-|+| rampsustain "0"
-|+| ramprelease (scale 0 0.08 $ slow 2.877 sine1)
-|+| rpitchenv (scale 0.2 0.8 $ density 1.987 sine1)
-|+| rport "0" --(scale 0 0.5 $ slow 1.77777 sine1)
-|+| rpitchatk (scale 0 0.5 $ density 3.4111 sine1)
-|+| rpitchdecay (scale 0 0.5 $ density 1.2222 sine1)
+|+| rampatk (scale 0 0.01 $ shift' 4 $ rand)
+|+| rampdecay (scale 0 0.5 $ shift' 5 $ rand)
+|+| rampsustain (scale 0.03 0.5 $ shift' 6 $ rand)
+|+| ramprelease (scale 0 0.5 $ shift' 7 $ rand)
+|+| rpitchenv (scale 0.4 0.6 $ shift' 8 $ rand)
+|+| rport (scale 0 0.5 $ shift' 9 $ rand)
+|+| rpitchatk (scale 0 0.5 $ shift' 10 $ rand)
+|+| rpitchdecay (scale 0 0.5 $ shift' 11 $ rand)
 |+| rosc1 "1"
-|+| rosc2 (scale 0 1 $ slow 2.6665 sine1)
-|+| rosc2tune (scale 0 1 $ sine1)
-|+| rsub (scale 0 1 $ slow 1.919 sine1)
-|+| rnoise (scale 0 1 $ density 3.71771 sine1)
+|+| rosc2 (scale 0 1 $ shift' 12 $ rand)
+|+| rosc2tune (scale 0.4 0.6 $ shift' 13 $ rand)
+|+| rsub (scale 0 1 $ shift' 14 $ rand)
+|+| rnoise (scale 0 0.5 $ shift' 15 $ rand)
 |+| rnoisetype "[0 1]*3"
 |+| rsubtype "[0 1]*5"
-|+| rlegato "0" --"[0 1]/2"
+|+| rlegato "[0 1]/2"
 |+| rmono "0.5" --"[0 0.5 1]*7"
-|+| rosc1type (scale 0 1 $ slow 1.77777 sine1)
-|+| rosc1range (scale 0 1 $ slow 2.8888 sine1)
-|+| rosc1color (scale 0 1 $ density 1.4344 sine1)
-|+| rosc1xmod (scale 0 1 $ density 1.30010010 sine1)
-|+| rosc1mod (scale 0 1 $ density 3 sine1)
-|+| rosc2type (scale 0 1 $ slow 0.9999 sine1)
-|+| rosc2range (scale 0 1 $ slow 3.151 sine1)
-|+| rosc2color (scale 0 1 $ slow 5.131 sine1)
+|+| rosc1type (scale 0 1 $ shift' 16 $ rand)
+|+| rosc1range (scale 0 1 $ shift' 17 $ rand)
+|+| rosc1color (scale 0 1 $ shift' 18 $ rand)
+|+| rosc1xmod (scale 0 1 $ shift' 19 $ rand)
+|+| rosc1mod (scale 0 1 $ shift' 20 $ rand)
+|+| rosc2type (scale 0 1 $ shift' 21 $ rand)
+|+| rosc2range (scale 0 1 $ shift' 22 $ rand)
+|+| rosc2color (scale 0 1 $ shift' 23 $ rand)
 |+| rosc2ring "[0 1]"
-|+| rosc2mod (scale 0 1 $ slow 3.141 sine1)
+|+| rosc2mod (scale 0 1 $ shift' 24 $ rand)
 |+| rosc2sync "[0 1]*7"
-|+| rlforate (scale 0 1 $ slow 2.17717 sine1)
-|+| rlfofilter (scale 0 1 $ slow 3.3333 sine1)
-|+| rlfoamp (scale 0 1 $ slow 1.21 sine1)
-|+| rlfotype rand
+|+| rlforate (scale 0 0.5 $ shift' 25 $ rand)
+|+| rlfofilter (scale 0 1 $ shift' 26 $ rand)
+|+| rlfoamp (scale 0 1 $ shift' 27 $ rand)
+|+| rlfotype (scale 0 1 $ shift' 370 $ rand)
 |+| rlfokeytrig "[0 1]*3"
-|+| rdelay "0" --(scale 0 1 $ slow 3.7 sine1)
-|+| rdelaytime (scale 0 0.03 $ slow 3.888 sine1)
-|+| rreverb "0" --(scale 0 0.4 $ density 1.2331121 sine1)
+|+| rdelay "0" --(scale 0 0.3 $ slow 3.7 sine1)
+|+| rdelaytime (scale 0.3 0.6 $ shift' 28 $ rand)
+|+| rreverb (scale 0 0.01 $ shift' 29 $ rand)
 
 --A C D E G A
 m $ whenmod 16 8 ((|+| note "-4")) $ slow 4 $ rarely (|+| note "-12") $ (|+| note "45") $ mel mpent 12 "0*16?"
