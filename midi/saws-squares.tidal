@@ -1,0 +1,11 @@
+m $ slow 4 $ whenmod 16 8 (|+| note "-5") $ stack [sometimes (|+| note "[12 24 -12 -24]*5") $ (|+| note "45") $ mel mpent 15 "{0 ~ ~ ~ ~}%4"
+|+| dur (scale 1 2 $ rand)
+|+| modwheel (rand),
+sometimes (|+| note "[12 -24 24 -12]*3") $ (|+| note "57") $ mel mpent 10 "{0 ~ ~}%8"
+|+| dur (scale 1 2 $ rand)
+|+| modwheel (rand)]
+
+k7 $ 
+sometimes (|+| note "[12 24]*2") $ (|+| note "45") $ mel mpent 7 "0?"
+|+| dur (scale 0.1 0.5 $ rand)
+|+| modwheel (rand)
