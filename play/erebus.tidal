@@ -1,1 +1,31 @@
+bps (400/120)
 
+k7 $ (|+| note "57") $ mel m9 10 "0*8"
+|+| modwheel (rand)
+
+m $ slow 8 $ (|+| note "45") $ mel m9 10 "0*4? ~ ~ 0*2?"
+
+d1 $ whenmod 18 14 (iter 4) $
+whenmod 22 18 (trunc 0.25) $
+whenmod 13 11 (slow (4/3)) $
+every 11 (rev) $
+every 13 (rip 0.2 0.1) $
+every 12 (|+| crush "{4 -5 3 -6 5}%8") $
+every 10 (|*| speed "-1") $
+every 7 (|+| coarse "24 32 64") $
+every 8 (rip' 0 1 8 0.2 0.1) $
+every 5 (gap 4) $ every 6 (chop 4) $
+whenmod 14 10 (degrade) $
+foldEvery [3,4] (2.75 <~) $
+slowcat [
+sound (samples "nu*4" (irand 30)) |+| unit "c" |+| speed "4",
+sound (samples "brkh1*4" (irand 30)) |+| unit "c" |+| speed "4" |+| gain "1.2",
+sound (samples "brkh4*4" (irand 30)) |+| unit "c" |+| speed "4" |+| gain "1.2",
+sound (samples "brkh3*4" (irand 30)) |+| unit "c" |+| speed "4" |+| gain "1.2",
+sound (samples "brkh2*4" (irand 30)) |+| unit "c" |+| speed "4" |+| gain "1.2"
+] |+| cut "1"
+
+m silence
+k7 silence
+
+d1 silence
