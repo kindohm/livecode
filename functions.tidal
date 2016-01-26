@@ -9,6 +9,10 @@ let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
     gtfo p = (const $ sound "~") p
     shift p = (1024 <~)  p
     shift' x p = (x <~) p
+    choose xs = (xs !!) <$> (irand $ fromIntegral $ length xs)
+    runMidi xs len = (xs !!) <$> (run $ fromIntegral $ len)
+    chooseMidi root xs pat = (|+| note root) $ (|+| note (choose xs)) $ note pat
+    chooseMidi' root xs ranges pat = (|+| note (choose ranges)) $ shift $ chooseMidi root xs pat
 
     let pingpongBy' x fb tL tR cps f p = stack [ p,
                                      (tL ~> (f p)) # pan (pure $ (1-x)/2) |*| ddd,
