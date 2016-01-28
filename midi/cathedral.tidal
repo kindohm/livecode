@@ -7,8 +7,9 @@ keys $ slow 4 $ note ((+68) <$> "[{0 2 5 4 7}%4, {14 12 9 7 16}%4, {0 -8 -7 -5}%
 |+| kvoice "0"
 |+| kcutoff "0.05"
 
-bass $ slow 4 $ note ((+44) <$> "0")
-|+| dur "4"
+-- bass
+m $ slow 4 $ note ((+44) <$> "0")
+|+| dur "3"
 
 keys silence
-bass silence
+m silence
