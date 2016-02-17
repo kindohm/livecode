@@ -1,9 +1,13 @@
 
 m silence
 
+
 -- bass notes or something
 bps (190/120)
-m $ (|+| note "[33 21 45 57]*5") $ note "0" -- note "0*16"
+
+m $ note "48*8?"
+
+m $ (|+| note (choose [45,57,33,69])) $ note "0*8?" -- note "0*16"
 |+| dur (scale 0.05 0.8 $ shift' 30 $ rand)
 |+| rfilteratk (scale 0 0.01 $ shift' 31 $ rand)
 |+| rfilterdecay (scale 0 0.5 $ shift' 32 $ rand)
@@ -13,20 +17,20 @@ m $ (|+| note "[33 21 45 57]*5") $ note "0" -- note "0*16"
 |+| rfilterenv (scale 0.4 0.6 $ shift' 36 $ rand)
 |+| rlpcutoff (scale 0.4 1 $ shift' 2 $ rand)
 |+| rhpcutoff (scale 0 0.5 $ shift' 3 $ rand)
-|+| rcrush "[0 0 0 0 0.1]/5"
+|+| rcrush "0" --"[0 0 0 0 0.1]/5"
 |+| rampatk (scale 0 0.01 $ shift' 4 $ rand)
 |+| rampdecay (scale 0 0.5 $ shift' 5 $ rand)
 |+| rampsustain (scale 0.03 0.5 $ shift' 6 $ rand)
 |+| ramprelease (scale 0 0.5 $ shift' 7 $ rand)
-|+| rpitchenv (scale 0.4 0.6 $ shift' 8 $ rand)
+|+| rpitchenv "0" -- (scale 0.45 0.55 $ shift' 8 $ rand)
 |+| rport (scale 0 0.5 $ shift' 9 $ rand)
 |+| rpitchatk (scale 0 0.5 $ shift' 10 $ rand)
 |+| rpitchdecay (scale 0 0.5 $ shift' 11 $ rand)
 |+| rosc1 "1"
 |+| rosc2 (scale 0 1 $ shift' 12 $ rand)
-|+| rosc2tune (scale 0.4 0.6 $ shift' 13 $ rand)
+|+| rosc2tune (scale 0.45 0.55 $ shift' 13 $ rand)
 |+| rsub (scale 0 1 $ shift' 14 $ rand)
-|+| rnoise (scale 0 0.5 $ shift' 15 $ rand)
+|+| rnoise (scale 0 0.1 $ shift' 15 $ rand)
 |+| rnoisetype "[0 1]*3"
 |+| rsubtype "[0 1]*5"
 |+| rlegato "0" --"[0 1]/2"
@@ -34,7 +38,7 @@ m $ (|+| note "[33 21 45 57]*5") $ note "0" -- note "0*16"
 |+| rosc1type (scale 0 1 $ shift' 16 $ rand)
 |+| rosc1range (scale 0 0.5 $ shift' 17 $ rand)
 |+| rosc1color (scale 0 1 $ shift' 18 $ rand)
-|+| rosc1xmod (scale 0 1 $ shift' 19 $ rand)
+|+| rosc1xmod "0" -- (scale 0 1 $ shift' 19 $ rand)
 |+| rosc1mod (scale 0 1 $ shift' 20 $ rand)
 |+| rosc2type (scale 0 1 $ shift' 21 $ rand)
 |+| rosc2range (scale 0 0.5 $ shift' 22 $ rand)
@@ -42,70 +46,41 @@ m $ (|+| note "[33 21 45 57]*5") $ note "0" -- note "0*16"
 |+| rosc2ring "[0 1]/3"
 |+| rosc2mod (scale 0 1 $ shift' 24 $ rand)
 |+| rosc2sync "0"
-|+| rlforate (scale 0 0.5 $ shift' 25 $ rand)
-|+| rlfofilter (scale 0 1 $ shift' 26 $ rand)
-|+| rlfoamp (scale 0 1 $ shift' 27 $ rand)
-|+| rlfotype (scale 0 1 $ shift' 370 $ rand)
+|+| rlforate (scale 0 1 $ shift' 25 $ rand)
+|+| rlfofilter (scale 0 0.5 $ shift' 26 $ rand)
+|+| rlfoamp (scale 0 0.5 $ shift' 27 $ rand)
+|+| rlfotype (scale 0 0.75 $ shift' 370 $ rand)
+|+| rlfopitch "0"
 |+| rlfokeytrig "0" --"[0 1]/3"
-|+| rdelay (scale 0 0.4 $ shift' 66 $ rand)
-|+| rdelaytime (scale 0 0.3 $ shift' 28 $ rand)
-|+| rreverb (scale 0 0.2 $ shift' 29 $ rand)
+|+| rdelay "0" --(scale 0 0.4 $ shift' 66 $ rand)
+|+| rdelaytime "0" --(scale 0 0.3 $ shift' 28 $ rand)
+|+| rreverb "0" -- (scale 0 0.2 $ shift' 29 $ rand)
 
 
 
-
+m silence
 
 
 
 -- uh rave stabs
 bps (190/120)
 
-m $ (|+| note "[12 0]/2") $ (|+| note "57") $ mel mpent 5 "0" -- note "0*16"
+m $ every 3 (|+| note "-12 0") $ (|+| note "57") $ note "0*8?" -- note "0*16"
 |+| dur (scale 0.05 0.3 $ shift' 30 $ rand)
-|+| rfilteratk (scale 0 0.05 $ shift' 31 $ rand)
-|+| rfilterdecay (scale 0 0.5 $ shift' 32 $ rand)
-|+| rfiltersustain (scale 0 1 $ shift' 33 $ rand)
-|+| rfilterrelease (scale 0 0.5 $ shift' 34 $ rand)
-|+| rres (scale 0 0.5 $ shift' 35 $ rand)
-|+| rfilterenv (scale 0.5 0.8 $ shift' 36 $ rand)
-|+| rlpcutoff (scale 0.4 1 $ shift' 2 $ rand)
-|+| rlpftype (scale 0 1 $ shift' 88 $ rand)
-|+| rhpcutoff (scale 0 0.5 $ shift' 3 $ rand)
-|+| rcrush "0"
-|+| rampatk (scale 0 0.01 $ shift' 4 $ rand)
-|+| rampdecay (scale 0 0.5 $ shift' 5 $ rand)
-|+| rampsustain (scale 0.1 0.5 $ shift' 6 $ rand)
-|+| ramprelease (scale 0 0.5 $ shift' 7 $ rand)
-|+| rpitchenv "0.5" --(scale 0.4 0.6 $ shift' 8 $ rand)
-|+| rport "0" --(scale 0 0.5 $ shift' 9 $ rand)
-|+| rpitchatk "0" --(scale 0 0.5 $ shift' 10 $ rand)
-|+| rpitchdecay "0" --(scale 0 0.5 $ shift' 11 $ rand)
-|+| rosc1 "0.7"
-|+| rosc2 (scale 0.5 0.7 $ shift' 12 $ rand)
-|+| rosc2tune (scale 0.4 0.6 $ shift' 13 $ rand)
-|+| rsub "0" --(scale 0 1 $ shift' 14 $ rand)
-|+| rnoise "0" --(scale 0 0.5 $ shift' 15 $ rand)
-|+| rnoisetype "[0 1]*3"
-|+| rsubtype "[0 1]*5"
-|+| rlegato "0" --"[0 1]/2"
-|+| rmono "0.5" --"[0 0.5 1]*7"
-|+| rosc1type (scale 0 1 $ shift' 16 $ rand)
 |+| rosc1range (scale 0 0.5 $ density 1.1 sine1)
-|+| rosc1color (scale 0 0.5 $ shift' 18 $ rand)
-|+| rosc1xmod "0" --(scale 0 1 $ shift' 19 $ rand)
-|+| rosc1mod (scale 0 1 $ shift' 20 $ rand)
-|+| rosc2type (scale 0 1 $ shift' 21 $ rand)
-|+| rosc2range (scale 0 0.5 $ density 1.1 sine1)
-|+| rosc2color (scale 0 0.5 $ shift' 23 $ rand)
-|+| rosc2ring "[0 1]/3"
-|+| rosc2mod (scale 0 1 $ shift' 24 $ rand)
-|+| rosc2sync "0"
+|+| rosc2range (scale 0 0.25 $ density 1.1 sine1)
+
+|+| rampatk (scale 0 0.05 $ shift' 4 $ rand)
+|+| rampdecay (scale 0 0.5 $ shift' 5 $ rand)
+|+| rampsustain (scale 0.2 0.8 $ shift' 6 $ rand)
+|+| ramprelease (scale 0.1 0.5 $ shift' 7 $ rand)
+|+| rosc1type (scale 0 1 $ shift' 16 $ rand)
+|+| rosc2type (scale 0 1 $ shift' 16 $ rand)
+
 |+| rlforate (scale 0 0.2 $ shift' 25 $ rand)
 |+| rlfofilter (scale 0 1 $ shift' 26 $ rand)
 |+| rlfoamp (scale 0 1 $ shift' 27 $ rand)
 |+| rlfotype (scale 0 1 $ shift' 370 $ rand)
-|+| rlfopitch "0.5"
-|+| rlfokeytrig "1" --"[0 1]/3"
-|+| rdelay (scale 0 0.4 $ shift' 66 $ rand)
-|+| rdelaytime (scale 0 0.2 $ shift' 28 $ rand)
-|+| rreverb (scale 0 0.4 $ shift' 29 $ rand)
+
+
+m silence

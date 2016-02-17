@@ -10,15 +10,20 @@ let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
     shift p = (1024 <~)  p
     shift' x p = (x <~) p
     choose xs = (xs !!) <$> (irand $ fromIntegral $ length xs)
-    runMidi xs len = (xs !!) <$> (run $ fromIntegral $ len)
-    chooseMidi root xs pat = (|+| note root) $ (|+| note (choose xs)) $ note pat
-    chooseMidi' root xs ranges pat = (|+| note (choose ranges)) $ shift $ chooseMidi root xs pat
 
-    let pingpongBy' x fb tL tR cps f p = stack [ p,
-                                     (tL ~> (f p)) # pan (pure $ (1-x)/2) |*| ddd,
-                                     ((tL+tR) ~> (f p)) # pan (pure $ (x+1)/2) |*| ddd ]
-                  where ddd = delay "1" |*| delaytime (pure $ fromRational $ (tL+tR)/cps) |*| delayfeedback (pure fb) |*| gain (pure fb)
+-- custom stuff with imports
+import Music.Theory.Bjorklund
 
+let notE n k p = (flip const) <$> (filterValues (== True) $ listToPat $ (map not $ bjorklund (n,k))) <*> p
+
+
+
+
+
+
+
+
+-- sequence stuff
 
 let runnow d p = do now <- getNow
                     d $ (nextSam now) ~> p
@@ -26,6 +31,3 @@ let runnow d p = do now <- getNow
 runnow d1 $ seqP [(0,4,sound "bm1(3,8)"),(2,6,sound "bm2(5,8)")]
 
 runnow d1 $ every 3 (|+| speed "2") $ sound "break1*4"
-
---d1 $ pingpongBy' 1 0.8 (1/8) (2/8) ((|*| cutoff "0.05") . (|*| resonance "0.1"))
--- $ (sound $ samples "peri:3" (irand 8))
