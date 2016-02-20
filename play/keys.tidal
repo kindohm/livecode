@@ -1,0 +1,5 @@
+keys $ (|+| note (choose [0,2,4])) $ (|+| note "45") $ note "0 0*2 0 0"
+
+keys $ chooseMidi "45" mpent "0*8?"
+
+keys silence
