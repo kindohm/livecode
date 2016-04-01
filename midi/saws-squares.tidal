@@ -10,3 +10,5 @@ k7 $ slow 2 $ whenmod 16 8 (|+| note "-5") $
 chooseMidi' "45" mpent [0,12,0] "0?"
 |+| dur (scale 0.1 0.5 $ rand)
 |+| modwheel (rand)
+
+k7 silence

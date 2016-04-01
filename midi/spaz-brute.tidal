@@ -11,3 +11,7 @@ slow 4 $ mel m9 6 "{0 0*2 [~ 0] [~ 0]*2 0 [~ 0]}%16"
 brute silence
 
 k7 $ note "50" |+| dur "2"
+
+d1 $ sound "k s"
+
+k7 silence
